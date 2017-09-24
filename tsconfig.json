@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "importHelpers": true,
+        "strict": true,
+        "sourceMap": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "declaration": true,
+        "rootDir": ".",
+        "outDir": "build"
+    },
+    "include": [
+        "src/**/*",
+        "test/**/*"
+    ]
+}

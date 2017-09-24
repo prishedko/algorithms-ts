@@ -1,0 +1,41 @@
+{
+    "name": "algorithms-ts",
+    "version": "0.0.1",
+    "description": "Java to Typesctipt translations of algorithms from Robert Sedgewick and Kevin Wayne's website for their book Algorithms.",
+    "engineStrict": true,
+    "engines": {
+        "node": ">= 6.9.0"
+    },
+    "devDependencies": {
+        "@types/jest": "~20.0.8",
+        "@types/node": "~6.0.88",
+        "jest": "~21.0.2",
+        "rimraf": "~2.6.1",
+        "tslint": "~5.7.0",
+        "tslint-microsoft-contrib": "~5.0.1",
+        "tsutils": "~2.8.2",
+        "typescript": "~2.5.2"
+    },
+    "scripts": {
+        "clean": "rimraf coverage build tmp",
+        "compile": "tsc",
+        "compile-release": "tsc -p tsconfig.release.json",
+        "lint": "tslint -t stylish --type-check --project 'tsconfig.json'",
+        "test": "npm run test-only",
+        "test-only": "jest --coverage",
+        "build": "npm run compile-release && npm run test"
+    },
+    "author": "Bogdan Prishedko <prishedko@gmail.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/prishedko/algorithms-ts.git"
+    },
+    "bugs": {
+        "url": "https://github.com/prishedko/algorithms-ts/issues"
+    },
+    "homepage": "https://github.com/prishedko/algorithms-ts#readme",
+    "dependencies": {
+        "tslib": "~1.7.1"
+    }
+}
