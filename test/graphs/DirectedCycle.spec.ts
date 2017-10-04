@@ -19,6 +19,7 @@ describe('DirectedCycle', () => {
             const dg = digraphFromEdgesKeys(tinyDG)
             const dc = directedCycle(dg)
             expect(dc.hasCycle()).toBe(true)
+            expect(cycleToString(dc.cycle())).toBe('12->9->11->12')
         })
         it('should not find cycle in tinyDAG', () => {
             const dag = digraphFromEdgesKeys(tinyDAG)

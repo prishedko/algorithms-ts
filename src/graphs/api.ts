@@ -67,6 +67,20 @@ export namespace GraphsAPI {
          */
         adjacent(v: Vertex<V>): Collection<Vertex<V>>
         /**
+         * Returns the number of directed edges incident from vertex <code>v</code>. This is known as the
+         * <tt>outdegree</tt> of vertex <code>v</code>.
+         * @param {GraphsAPI.Vertex<V>} v the vertex
+         * @return {number} the outdegree of vertex <code>v</code> or 0 if there is no such vertex in the graph.
+         */
+        outdegree(v: Vertex<V>): number
+        /**
+         * Returns the number of directed edges incident to vertex <code>v</code>. This is known as the
+         * <tt>indegree</tt> of vertex <code>v</code>.
+         * @param {GraphsAPI.Vertex<V>} v the vertex
+         * @return {number} the indegree of vertex <code>v</code> or 0 if there is no such vertex in the graph.
+         */
+        indegree(v: Vertex<V>): number
+        /**
          * Returns the reverse of the digraph.
          * @return the reverse of the digraph
          */

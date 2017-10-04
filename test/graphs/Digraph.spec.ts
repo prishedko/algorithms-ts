@@ -2,6 +2,7 @@ import { GraphsBuilders, GraphsAPI } from '../../src'
 import { tinyDG } from './tinyDG'
 import digraph = GraphsBuilders.digraph
 import vertex = GraphsBuilders.vertex
+import verkey = GraphsBuilders.verkey
 import digraphFromEdgesKeys = GraphsBuilders.digraphFromEdgesKeys
 import Digraph = GraphsAPI.Digraph
 import Vertex = GraphsAPI.Vertex
@@ -11,6 +12,7 @@ function edgeToString<V>(edge: [Vertex<V>, Vertex<V>]): string {
 }
 
 describe('Digraph', () => {
+    const tiny = digraphFromEdgesKeys(tinyDG)
 
     describe('DG API', () => {
         let dg: Digraph<number>
@@ -185,11 +187,50 @@ describe('Digraph', () => {
                 })
             })
         })
+        describe('outdegree', () => {
+            it('should correctly return outdegrees for existing vertices', () => {
+                expect(tiny.outdegree(verkey('0'))).toBe(2)
+                expect(tiny.outdegree(verkey('1'))).toBe(0)
+                expect(tiny.outdegree(verkey('2'))).toBe(2)
+                expect(tiny.outdegree(verkey('3'))).toBe(2)
+                expect(tiny.outdegree(verkey('4'))).toBe(2)
+                expect(tiny.outdegree(verkey('5'))).toBe(1)
+                expect(tiny.outdegree(verkey('6'))).toBe(4)
+                expect(tiny.outdegree(verkey('7'))).toBe(2)
+                expect(tiny.outdegree(verkey('8'))).toBe(1)
+                expect(tiny.outdegree(verkey('9'))).toBe(2)
+                expect(tiny.outdegree(verkey('10'))).toBe(1)
+                expect(tiny.outdegree(verkey('11'))).toBe(2)
+                expect(tiny.outdegree(verkey('12'))).toBe(1)
+            })
+            it('should return zero for non-existing vertices', () => {
+                expect(tiny.outdegree(verkey('13'))).toBe(0)
+            })
+        })
+        describe('indegree', () => {
+            it('should correctly return indegrees for existing vertices', () => {
+                expect(tiny.indegree(verkey('0'))).toBe(2)
+                expect(tiny.indegree(verkey('1'))).toBe(1)
+                expect(tiny.indegree(verkey('2'))).toBe(2)
+                expect(tiny.indegree(verkey('3'))).toBe(2)
+                expect(tiny.indegree(verkey('4'))).toBe(3)
+                expect(tiny.indegree(verkey('5'))).toBe(2)
+                expect(tiny.indegree(verkey('6'))).toBe(2)
+                expect(tiny.indegree(verkey('7'))).toBe(0)
+                expect(tiny.indegree(verkey('8'))).toBe(1)
+                expect(tiny.indegree(verkey('9'))).toBe(3)
+                expect(tiny.indegree(verkey('10'))).toBe(1)
+                expect(tiny.indegree(verkey('11'))).toBe(1)
+                expect(tiny.indegree(verkey('12'))).toBe(2)
+            })
+            it('should return zero for non-existing vertices', () => {
+                expect(tiny.indegree(verkey('13'))).toBe(0)
+            })
+        })
     })
 
     describe('DG as a Container', () => {
         const empty = digraph<string>()
-        const tiny = digraphFromEdgesKeys(tinyDG)
 
         describe('map', () => {
             it('should return empty container for empty DG', () => {

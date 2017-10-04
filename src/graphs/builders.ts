@@ -1,6 +1,6 @@
 import { GraphsAPI, GraphsAPI as api } from './api'
 import { AdjacencyListDigraph } from './AdjacencyListDigraph'
-import { DFSDirectedCycle } from './DFSDirectedCycle'
+import { QueueDirectedCycle } from './QueueDirectedCycle'
 import { BreadthFirstDirectedPaths } from './BreadthFirstDirectedPaths'
 import { DepthFirstDirectedPaths } from './DepthFirstDirectedPaths'
 import DigraphSearch = GraphsAPI.DigraphSearch
@@ -74,7 +74,7 @@ export namespace GraphsBuilders {
      * @return {GraphsBuilders.DirectedCycle<V>} new <tt>DirectedCycle</tt> that analyzes given digraph.
      */
     export function directedCycle<V>(dg: Digraph<V>): DirectedCycle<V> {
-        return new DFSDirectedCycle(dg)
+        return new QueueDirectedCycle(dg)
     }
 
     /**

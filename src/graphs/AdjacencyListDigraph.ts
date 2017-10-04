@@ -1,5 +1,6 @@
 import { GraphsAPI } from './api'
 import { CommonsAPI, CommonsBuilder } from '../commons'
+import { IndexedByString } from './AuxiliaryTypes'
 import Digraph = GraphsAPI.Digraph
 import Vertex = GraphsAPI.Vertex
 import Collection = CommonsAPI.Collection
@@ -30,6 +31,7 @@ export class AdjacencyListDigraph<V> implements Digraph<V>, Collection<Vertex<V>
     private adjacencyList: AdjacencyList<V> = {}
     private verticesAmount: number = 0
     private edgesAmount: number = 0
+    private indegrees: IndexedByString<number> = {}
 
     constructor(edges: VerticesPair<V>[] = []) {
         edges.forEach(edge => this.addEdge(edge[0], edge[1]))
@@ -55,6 +57,7 @@ export class AdjacencyListDigraph<V> implements Digraph<V>, Collection<Vertex<V>
         }
         this.adjacencyList[from.key].adjecent.push(to)
         this.edgesAmount++
+        this.indegrees[to.key] = this.indegrees[to.key] === undefined ? 1 : this.indegrees[to.key] + 1
         return this
     }
 
@@ -71,6 +74,20 @@ export class AdjacencyListDigraph<V> implements Digraph<V>, Collection<Vertex<V>
             return collectionFromArray(this.adjacencyList[v.key].adjecent)
         }
         return emptyCollection()
+    }
+
+    outdegree(v: Vertex<V>): number {
+        if (this.adjacencyList[v.key]) {
+            return this.adjacencyList[v.key].adjecent.length
+        }
+        return 0
+    }
+
+    indegree(v: Vertex<V>): number {
+        if (this.indegrees[v.key] !== undefined) {
+            return this.indegrees[v.key]
+        }
+        return 0
     }
 
     reverse(): GraphsAPI.Digraph<V> {
