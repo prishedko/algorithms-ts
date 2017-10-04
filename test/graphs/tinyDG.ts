@@ -1,3 +1,22 @@
+/**
+ * Test digraph with the following structure:
+ * <pre>
+ * 13 vertices, 22 edges
+ *       0: 1 5
+ *       1:
+ *       2: 3 0
+ *       3: 2 5
+ *       4: 2 3
+ *       5: 4
+ *       6: 0 8 4 9
+ *       7: 9 6
+ *       8: 6
+ *       9: 10 11
+ *      10: 12
+ *      11: 12 4
+ *      12: 9
+ * </pre>
+ */
 export const tinyDG: [string, string][] = [
     ['4', '2'],
     ['2', '3'],

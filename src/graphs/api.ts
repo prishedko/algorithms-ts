@@ -25,6 +25,11 @@ export namespace GraphsAPI {
     export type VerticesPair<V> = [Vertex<V>, Vertex<V>]
 
     /**
+     * Function that takes a vertex and do some processing.
+     */
+    export type VertexVisitor<V> = (v: Vertex<V>) => void
+
+    /**
      * The <tt>Digraph</tt> class represents a directed graph of vertices. It supports adding new vertices and edges,
      * iteration over all vertices and iteration over all of the vertices adjecent from a given vertex. Parallel
      * edges and self-loops are permitted.
@@ -112,5 +117,41 @@ export namespace GraphsAPI {
          * @return a directed cycle if the digraph has a directed cycle, and [] otherwise.
          */
         cycle(): Collection<Vertex<V>>
+    }
+
+    /**
+     * The <code>DirectedPaths</code> class represents a data type for finding shortest paths (number of edges) from a
+     * source vertex that was used to create instance of <code>DirectedPaths</code> (or set of source vertices) to
+     * every other vertex in the digraph.
+     */
+    export interface DirectedPaths<V> {
+        /**
+         * Is there a directed path from the source (or sources) to vertex <code>v</code>?
+         * @param {GraphsAPI.Vertex<V>} v the vertex
+         * @return {boolean} <code>true</code> if there is a directed path, <code>false</code> otherwise. Also returns
+         * <code>false</code> if the vertex is not in the graph.
+         */
+        hasPathTo(v: Vertex<V>): boolean
+        /**
+         * Returns a shortest path from source (or sources) to vertex <code>v</code>, or empty collection if no such
+         * path.
+         * @param {GraphsAPI.Vertex<V>} v the vertex
+         * @return {CommonsAPI.Collection<GraphsAPI.Vertex<V>>} the sequence of vertices on a shortest path, as a
+         * Collection.
+         */
+        pathTo(v: Vertex<V>): Collection<Vertex<V>>
+    }
+
+    /**
+     * Defines API for digraph search.
+     */
+    export interface DigraphSearch<V> {
+        /**
+         * Does a search. Visits all vertices that are reachable from given source vertex (including source itself).
+         * @param {GraphsAPI.Digraph<V>} dg digraph to search.
+         * @param {GraphsAPI.Vertex<V>} source source vertex.
+         * @param {GraphsAPI.VertexVisitor<V>} visitor function that processes all found vetices.
+         */
+        search(dg: Digraph<V>, source: Vertex<V>, visitor: VertexVisitor<V>): void
     }
 }

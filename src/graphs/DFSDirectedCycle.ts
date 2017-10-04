@@ -8,14 +8,7 @@ import Stack = ContainersAPI.Stack
 import newStack = ContainersBuilders.newStack
 import Collection = CommonsAPI.Collection
 import emptyCollection = CommonsBuilder.emptyCollection
-
-type VerticesFlags = {
-    [vertexKey: string]: boolean
-}
-
-type EdgeTo<V> = {
-    [vertexKey: string]: Vertex<V>
-}
+import { IndexedByString, isMarked } from './AuxiliaryTypes'
 
 type Cycle<V> = Stack<Vertex<V>> | undefined
 
@@ -28,21 +21,17 @@ type Cycle<V> = Stack<Vertex<V>> | undefined
  * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 export class DFSDirectedCycle<V> implements DirectedCycle<V> {
-    private marked: VerticesFlags = {}
-    private edgeTo: EdgeTo<V> = {}
-    private onStack: VerticesFlags = {}
+    private marked: IndexedByString<boolean> = {}
+    private edgeTo: IndexedByString<Vertex<V>> = {}
+    private onStack: IndexedByString<boolean> = {}
     private detectedCycle: Cycle<V>
 
     constructor(dg: Digraph<V>) {
         dg.asVerticesCollection().forEach(v => {
-            if (!this.isMarked(v)) {
+            if (!isMarked(v, this.marked)) {
                 this.dfs(dg, v)
             }
         })
-    }
-
-    private isMarked(v: Vertex<V>): boolean {
-        return this.marked[v.key] !== undefined && this.marked[v.key] === true
     }
 
     private dfs(dg: Digraph<V>, v: Vertex<V>): void {
@@ -51,7 +40,7 @@ export class DFSDirectedCycle<V> implements DirectedCycle<V> {
         dg.adjacent(v).forEach(w => {
             if (this.detectedCycle) {
                 return
-            } else if (!this.isMarked(w)) {
+            } else if (!isMarked(w, this.marked)) {
                 this.edgeTo[w.key] = v
                 this.dfs(dg, w)
             } else if (this.onStack[w.key] === true) {

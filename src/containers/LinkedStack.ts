@@ -1,30 +1,9 @@
 import { ContainersAPI } from './api'
 import { CommonsAPI, CommonsBuilder } from '../commons'
+import { Node, NodesIterator } from './AuxiliaryTypes'
 import Stack = ContainersAPI.Stack
 import collectionFromArray = CommonsBuilder.collectionFromArray
 import Collection = CommonsAPI.Collection
-
-type Node<E> = undefined | {
-    readonly element: E
-    readonly next: Node<E>
-}
-
-class ListIterator<E> {
-    constructor(private current: Node<E>) {}
-
-    hasNext(): boolean {
-        return !!this.current
-    }
-
-    next(): E {
-        if (!this.hasNext()) {
-            throw new Error('No such element')
-        }
-        const element = this.current!.element
-        this.current = this.current!.next
-        return element
-    }
-}
 
 /**
  * This implementation uses a singly-linked list with a non-static nested class for linked-list nodes.
@@ -63,6 +42,10 @@ export class LinkedStack<E> implements Stack<E>, Collection<E> {
         return this.topOfStack!.element
     }
 
+    isEmpty(): boolean {
+        return this.stackSize === 0
+    }
+
     toString(): string {
         return this.reduce((acc, e) => acc === '' ? String(e) : acc + ' ' + e, '')
     }
@@ -73,28 +56,22 @@ export class LinkedStack<E> implements Stack<E>, Collection<E> {
 
     map<T>(f: (e: E) => T): Collection<T> {
         const result: T[] = []
-        const iter = new ListIterator(this.topOfStack)
-        while (iter.hasNext()) {
-            const element = iter.next()
-            result.push(f(element))
-        }
+        this.forEach(e => result.push(f(e)))
         return collectionFromArray(result, false)
     }
 
     filter(p: (e: E) => boolean): Collection<E> {
         const result: E[] = []
-        const iter = new ListIterator(this.topOfStack)
-        while (iter.hasNext()) {
-            const element = iter.next()
-            if (p(element)) {
-                result.push(element)
+        this.forEach(e => {
+            if (p(e)) {
+                result.push(e)
             }
-        }
+        })
         return collectionFromArray(result, false)
     }
 
     forEach(f: (e: E) => void): void {
-        const iter = new ListIterator(this.topOfStack)
+        const iter = new NodesIterator(this.topOfStack)
         while (iter.hasNext()) {
             const element = iter.next()
             f(element)
@@ -102,12 +79,8 @@ export class LinkedStack<E> implements Stack<E>, Collection<E> {
     }
 
     reduce<A>(r: (accumulator: A, currentElement: E) => A, initialValue: A): A {
-        const iter = new ListIterator(this.topOfStack)
         let result = initialValue
-        while (iter.hasNext()) {
-            const element = iter.next()
-            result = r(result, element)
-        }
+        this.forEach(e => result = r(result, e))
         return result
     }
 
