@@ -1,4 +1,4 @@
-import { CommonsAPI } from '../commons'
+import { CommonsAPI } from '../commons/api'
 import Collection = CommonsAPI.Collection
 
 /**

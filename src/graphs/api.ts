@@ -168,4 +168,38 @@ export namespace GraphsAPI {
          */
         search(dg: Digraph<V>, source: Vertex<V>, visitor: VertexVisitor<V>): void
     }
+
+    /**
+     * The <code>DepthFirstOrder</code> class represents a data type for determining depth-first search ordering of the
+     * vertices in a digraph or edge-weighted digraph, including preorder, postorder, and reverse postorder.
+     */
+    export interface DepthFirstOrder<V> {
+        /**
+         * Returns the preorder number of vertex <code>v</code>.
+         * @param  v the vertex
+         * @return the preorder number of vertex <code>v</code> or -1 if the vertex is not in the graph.
+         */
+        preorderNumber(v: Vertex<V>): number
+        /**
+         * Returns the postorder number of vertex <code>v</code>.
+         * @param  v the vertex
+         * @return the postorder number of vertex <code>v</code> or -1 if the vertex is not in the graph.
+         */
+        postorderNumber(v: Vertex<V>): number
+        /**
+         * Returns the vertices in postorder.
+         * @return the vertices in postorder, as an iterable of vertices
+         */
+        post(): Collection<Vertex<V>>
+        /**
+         * Returns the vertices in preorder.
+         * @return the vertices in preorder, as an iterable of vertices
+         */
+        pre(): Collection<Vertex<V>>
+        /**
+         * Returns the vertices in reverse postorder.
+         * @return the vertices in reverse postorder, as an iterable of vertices
+         */
+        reversePost(): Collection<Vertex<V>>
+    }
 }

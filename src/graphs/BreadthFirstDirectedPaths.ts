@@ -1,7 +1,8 @@
-import { IndexedByString, isMarked } from './AuxiliaryTypes'
+import { isMarked, StringMap } from './AuxiliaryTypes'
 import { GraphsAPI } from './api'
-import { ContainersBuilders } from '../containers'
-import { CommonsAPI, CommonsBuilder } from '../commons'
+import { ContainersBuilders } from '../containers/builders'
+import { CommonsAPI } from '../commons/api'
+import { CommonsBuilder } from '../commons/builders'
 import Vertex = GraphsAPI.Vertex
 import Digraph = GraphsAPI.Digraph
 import DirectedPaths = GraphsAPI.DirectedPaths
@@ -20,8 +21,8 @@ import emptyCollection = CommonsBuilder.emptyCollection
  * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 export class BreadthFirstDirectedPaths<V> implements DirectedPaths<V> {
-    private marked: IndexedByString<boolean> = {}       // marked[v] = is there an s->v path?
-    private edgeTo: IndexedByString<Vertex<V>> = {}     // edgeTo[v] = last edge on shortest s->v path
+    private marked = new StringMap<boolean>()       // marked[v] = is there an s->v path?
+    private edgeTo = new StringMap<Vertex<V>>()     // edgeTo[v] = last edge on shortest s->v path
 
     /**
      * Computes the shortest path from any one of the source vertices in <code>sources</code> to every other vertex in
@@ -35,14 +36,14 @@ export class BreadthFirstDirectedPaths<V> implements DirectedPaths<V> {
 
     private bfs(G: Digraph<V>, source: Vertex<V>): void {
         const q = newQueue<Vertex<V>>()
-        this.marked[source.key] = true
+        this.marked.set(source.key, true)
         q.enqueue(source)
         while (!q.isEmpty()) {
             const v = q.dequeue()
             G.adjacent(v).forEach(w => {
                 if (!isMarked(w, this.marked)) {
-                    this.edgeTo[w.key] = v
-                    this.marked[w.key] = true
+                    this.edgeTo.set(w.key, v)
+                    this.marked.set(w.key, true)
                     q.enqueue(w)
                 }
             })
@@ -58,7 +59,7 @@ export class BreadthFirstDirectedPaths<V> implements DirectedPaths<V> {
             return emptyCollection()
         }
         const path = newStack<Vertex<V>>()
-        for (let x = v; x.key !== this.source.key; x = this.edgeTo[x.key]) {
+        for (let x = v; x.key !== this.source.key; x = this.edgeTo.get(x.key)!) {
             path.push(x)
         }
         path.push(this.source)

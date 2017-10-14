@@ -1,5 +1,6 @@
 import { ContainersAPI } from './api'
-import { CommonsAPI, CommonsBuilder } from '../commons'
+import { CommonsAPI } from '../commons/api'
+import { CommonsBuilder } from '../commons/builders'
 import { Node, NodesIterator } from './AuxiliaryTypes'
 import Queue = ContainersAPI.Queue
 import collectionFromArray = CommonsBuilder.collectionFromArray

@@ -1,6 +1,6 @@
-import { IndexedByString, isMarked } from './AuxiliaryTypes'
+import { isMarked, StringMap } from './AuxiliaryTypes'
 import { GraphsAPI } from './api'
-import { ContainersBuilders } from '../containers'
+import { ContainersBuilders } from '../containers/builders'
 import Vertex = GraphsAPI.Vertex
 import Digraph = GraphsAPI.Digraph
 import DigraphSearch = GraphsAPI.DigraphSearch
@@ -18,7 +18,7 @@ export class DigraphBFS<V> implements DigraphSearch<V> {
 }
 
 class BFS<V> {
-    private marked: IndexedByString<boolean> = {}
+    private marked = new StringMap<boolean>()
 
     constructor(private G: Digraph<V>, private source: Vertex<V>, private visitor: VertexVisitor<V>) {}
 
@@ -28,14 +28,14 @@ class BFS<V> {
 
     private bfs(G: Digraph<V>, source: Vertex<V>): void {
         const q = newQueue<Vertex<V>>()
-        this.marked[source.key] = true
+        this.marked.set(source.key, true)
         q.enqueue(source)
         while (!q.isEmpty()) {
             const v = q.dequeue()
             this.visitor(v)
             G.adjacent(v).forEach(w => {
                 if (!isMarked(w, this.marked)) {
-                    this.marked[w.key] = true
+                    this.marked.set(w.key, true)
                     q.enqueue(w)
                 }
             })

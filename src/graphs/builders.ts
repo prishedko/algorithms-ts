@@ -6,6 +6,7 @@ import { DepthFirstDirectedPaths } from './DepthFirstDirectedPaths'
 import DigraphSearch = GraphsAPI.DigraphSearch
 import { DigraphBFS } from './DigraphBFS'
 import { DigraphDFS } from './DigraphDFS'
+import { DepthFirstOrderDFS } from './DepthFirstOrderDFS'
 
 /**
  * Factory functions for creating instances of graphs' ADTs.
@@ -16,6 +17,7 @@ export namespace GraphsBuilders {
     import DirectedCycle = api.DirectedCycle
     import VerticesPair = api.VerticesPair
     import DirectedPaths = GraphsAPI.DirectedPaths
+    import DepthFirstOrder = GraphsAPI.DepthFirstOrder
 
     /**
      * Creates new instance of <tt>Digraph</tt>.
@@ -111,5 +113,14 @@ export namespace GraphsBuilders {
      */
     export function digraphDFS<V>(): DigraphSearch<V> {
         return new DigraphDFS()
+    }
+
+    /**
+     * Creates an instance of <code>DepthFirstOrder</code> for given digrapth.
+     * @param {GraphsBuilders.Digraph<V>} dg digraph to build the order.
+     * @return {GraphsAPI.DepthFirstOrder<V>} implementation of <tt>DepthFirstOrder</tt>.
+     */
+    export function depthFirstOrder<V>(dg: Digraph<V>): DepthFirstOrder<V> {
+        return new DepthFirstOrderDFS(dg)
     }
 }

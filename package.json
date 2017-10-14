@@ -2,6 +2,7 @@
     "name": "algorithms-ts",
     "version": "0.0.1",
     "description": "Java to Typesctipt translations of algorithms from Robert Sedgewick and Kevin Wayne's website for their book Algorithms.",
+    "main": "index.js",
     "engineStrict": true,
     "engines": {
         "node": ">= 6.9.0"
@@ -23,7 +24,7 @@
         "lint": "tslint -t stylish --type-check --project 'tsconfig.json'",
         "test": "npm run test-only",
         "test-only": "jest --coverage",
-        "build": "npm run compile-release && npm run test"
+        "build": "npm run compile-release && npm run test && cp ./package.json build/src && cp ./README.md build/src"
     },
     "author": "Bogdan Prishedko <prishedko@gmail.com>",
     "license": "MIT",

@@ -1,6 +1,8 @@
 import { GraphsAPI } from './api'
-import { ContainersAPI, ContainersBuilders } from '../containers'
-import { CommonsAPI, CommonsBuilder } from '../commons'
+import { ContainersAPI } from '../containers/api'
+import { ContainersBuilders } from '../containers/builders'
+import { CommonsAPI } from '../commons/api'
+import { CommonsBuilder } from '../commons/builders'
 import DirectedCycle = GraphsAPI.DirectedCycle
 import Vertex = GraphsAPI.Vertex
 import Digraph = GraphsAPI.Digraph
@@ -8,7 +10,7 @@ import Stack = ContainersAPI.Stack
 import newStack = ContainersBuilders.newStack
 import Collection = CommonsAPI.Collection
 import emptyCollection = CommonsBuilder.emptyCollection
-import { IndexedByString, isMarked } from './AuxiliaryTypes'
+import { isMarked, StringMap } from './AuxiliaryTypes'
 import Queue = ContainersAPI.Queue
 import newQueue = ContainersBuilders.newQueue
 
@@ -28,53 +30,53 @@ export class QueueDirectedCycle<V> implements DirectedCycle<V> {
 
     constructor(dg: Digraph<V>) {
         // indegrees of remaining vertices
-        const indegree: IndexedByString<number> = {}
+        const indegree = new StringMap<number>()
         // initialize queue to contain all vertices with indegree = 0
         const queue: Queue<Vertex<V>> = newQueue()
         dg.asVerticesCollection().forEach(v => {
-            indegree[v.key] = dg.indegree(v)
-            if (indegree[v.key] === 0) {
+            indegree.set(v.key, dg.indegree(v))
+            if (indegree.get(v.key) === 0) {
                 queue.enqueue(v)
             }
         })
         while (!queue.isEmpty()) {
             const v = queue.dequeue()
             dg.adjacent(v).forEach(w => {
-                indegree[w.key]--
-                if (indegree[w.key] === 0) {
+                indegree.set(w.key, indegree.get(w.key)! - 1)
+                if (indegree.get(w.key) === 0) {
                     queue.enqueue(w)
                 }
             })
         }
         // there is a directed cycle in subgraph of vertices with indegree >= 1.
-        const edgeTo: IndexedByString<Vertex<V>> = {}
+        const edgeTo = new StringMap<Vertex<V>>()
         let root: Vertex<V> | undefined
         dg.asVerticesCollection().forEach(v => {
-            if (indegree[v.key] === 0) {
+            if (indegree.get(v.key) === 0) {
                 return
             } else {
                 root = v
             }
             dg.adjacent(v).forEach(w => {
-                if (indegree[w.key] > 0) {
-                    edgeTo[w.key] = v
+                if (indegree.get(w.key)! > 0) {
+                    edgeTo.set(w.key, v)
                 }
             })
         })
 
         if (root) {
             // find any vertex on cycle
-            const visited: IndexedByString<boolean> = {}
-            while (!isMarked(root, visited)) {
-                visited[root.key] = true
-                root = edgeTo[root.key]
+            const visited = new StringMap<boolean>()
+            while (!isMarked(root!, visited)) {
+                visited.set(root!.key, true)
+                root = edgeTo.get(root!.key)
             }
             // extract cycle
             this.detectedCycle = newStack()
-            let v = root
+            let v = root!
             do {
                 this.detectedCycle.push(v)
-                v = edgeTo[v.key]
+                v = edgeTo.get(v.key)!
             } while (v !== root)
             this.detectedCycle.push(root)
         }

@@ -1,6 +1,7 @@
 import { GraphsAPI } from './api'
-import { CommonsAPI, CommonsBuilder } from '../commons'
-import { IndexedByString } from './AuxiliaryTypes'
+import { CommonsAPI } from '../commons/api'
+import { CommonsBuilder } from '../commons/builders'
+import { StringMap } from './AuxiliaryTypes'
 import Digraph = GraphsAPI.Digraph
 import Vertex = GraphsAPI.Vertex
 import Collection = CommonsAPI.Collection
@@ -11,10 +12,6 @@ import VerticesPair = GraphsAPI.VerticesPair
 type ListNode<V> = {
     vertex: Vertex<V>
     adjecent: Vertex<V>[]
-}
-
-type AdjacencyList<V> = {
-    [vertexKey: string]: ListNode<V>
 }
 
 /**
@@ -28,36 +25,32 @@ type AdjacencyList<V> = {
  * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 export class AdjacencyListDigraph<V> implements Digraph<V>, Collection<Vertex<V>> {
-    private adjacencyList: AdjacencyList<V> = {}
+    private adjacencyList = new StringMap<ListNode<V>>()
     private verticesAmount: number = 0
     private edgesAmount: number = 0
-    private indegrees: IndexedByString<number> = {}
+    private indegrees = new StringMap<number>()
 
     constructor(edges: VerticesPair<V>[] = []) {
         edges.forEach(edge => this.addEdge(edge[0], edge[1]))
     }
 
     addVertex(v: Vertex<V>): Digraph<V> {
-        if (!this.adjacencyList[v.key]) {
-            this.adjacencyList[v.key] = {
+        if (!this.adjacencyList.has(v.key)) {
+            this.adjacencyList.set(v.key, {
                 vertex: v,
                 adjecent: []
-            }
+            })
             this.verticesAmount++
         }
         return this
     }
 
     addEdge(from: Vertex<V>, to: Vertex<V>): Digraph<V> {
-        if (!this.adjacencyList[from.key]) {
-            this.addVertex(from)
-        }
-        if (!this.adjacencyList[to.key]) {
-            this.addVertex(to)
-        }
-        this.adjacencyList[from.key].adjecent.push(to)
+        this.addVertex(from)
+        this.addVertex(to)
+        this.adjacencyList.get(from.key)!.adjecent.push(to)
         this.edgesAmount++
-        this.indegrees[to.key] = this.indegrees[to.key] === undefined ? 1 : this.indegrees[to.key] + 1
+        this.indegrees.set(to.key, this.indegrees.get(to.key) === undefined ? 1 : this.indegrees.get(to.key)! + 1)
         return this
     }
 
@@ -70,22 +63,22 @@ export class AdjacencyListDigraph<V> implements Digraph<V>, Collection<Vertex<V>
     }
 
     adjacent(v: Vertex<V>): Collection<Vertex<V>> {
-        if (this.adjacencyList[v.key]) {
-            return collectionFromArray(this.adjacencyList[v.key].adjecent)
+        if (this.adjacencyList.has(v.key)) {
+            return collectionFromArray(this.adjacencyList.get(v.key)!.adjecent)
         }
         return emptyCollection()
     }
 
     outdegree(v: Vertex<V>): number {
-        if (this.adjacencyList[v.key]) {
-            return this.adjacencyList[v.key].adjecent.length
+        if (this.adjacencyList.has(v.key)) {
+            return this.adjacencyList.get(v.key)!.adjecent.length
         }
         return 0
     }
 
     indegree(v: Vertex<V>): number {
-        if (this.indegrees[v.key] !== undefined) {
-            return this.indegrees[v.key]
+        if (this.indegrees.has(v.key)) {
+            return this.indegrees.get(v.key)!
         }
         return 0
     }
@@ -101,9 +94,9 @@ export class AdjacencyListDigraph<V> implements Digraph<V>, Collection<Vertex<V>
     toString(): string {
         let s = ''
         s += this.verticesAmount + ' vertices, ' + this.edgesAmount + ' edges \n'
-        Object.keys(this.adjacencyList).forEach(vertexKey => {
+        this.adjacencyList.forEach((vertexKey, node) => {
             s += vertexKey + ':'
-            this.adjacencyList[vertexKey].adjecent.forEach(v =>  s += ' ' + v.key)
+            node.adjecent.forEach(v =>  s += ' ' + v.key)
             s += '\n'
         })
         return s
@@ -134,10 +127,7 @@ export class AdjacencyListDigraph<V> implements Digraph<V>, Collection<Vertex<V>
     }
 
     forEach(f: (e: GraphsAPI.Vertex<V>) => void): void {
-        Object.keys(this.adjacencyList).forEach(key => {
-            const node = this.adjacencyList[key]
-            f(node.vertex)
-        })
+        this.adjacencyList.forEach((_, node) => f(node.vertex))
     }
 
     reduce<A>(r: (accumulator: A, currentElement: GraphsAPI.Vertex<V>) => A, initialValue: A): A {
@@ -153,7 +143,7 @@ export class AdjacencyListDigraph<V> implements Digraph<V>, Collection<Vertex<V>
 
 class EdgesCollection<V> implements Collection<VerticesPair<V>> {
 
-    constructor(private adjacencyList: AdjacencyList<V>, private edgesAmount: () => number) {}
+    constructor(private adjacencyList: StringMap<ListNode<V>>, private edgesAmount: () => number) {}
 
     map<T>(f: (e: VerticesPair<V>) => T): Collection<T> {
         const result: T[] = []
@@ -172,9 +162,9 @@ class EdgesCollection<V> implements Collection<VerticesPair<V>> {
     }
 
     forEach(f: (e: VerticesPair<V>) => void): void {
-        Object.keys(this.adjacencyList).forEach(key => {
-            const v = this.adjacencyList[key].vertex
-            this.adjacencyList[key].adjecent.forEach(w => f([v, w]))
+        this.adjacencyList.forEach((_, node) => {
+            const v = node.vertex
+            node.adjecent.forEach(w => f([v, w]))
         })
     }
 

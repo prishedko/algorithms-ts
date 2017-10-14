@@ -1,7 +1,8 @@
-import { IndexedByString, isMarked } from './AuxiliaryTypes'
+import { isMarked, StringMap } from './AuxiliaryTypes'
 import { GraphsAPI } from './api'
-import { ContainersBuilders } from '../containers'
-import { CommonsAPI, CommonsBuilder } from '../commons'
+import { ContainersBuilders } from '../containers/builders'
+import { CommonsAPI } from '../commons/api'
+import { CommonsBuilder } from '../commons/builders'
 import Vertex = GraphsAPI.Vertex
 import Digraph = GraphsAPI.Digraph
 import DirectedPaths = GraphsAPI.DirectedPaths
@@ -18,8 +19,8 @@ import emptyCollection = CommonsBuilder.emptyCollection
  * <i>Algorithms, 4th Edition</i>
  */
 export class DepthFirstDirectedPaths<V> implements DirectedPaths<V> {
-    private marked: IndexedByString<boolean> = {}       // marked[v] = true if v is reachable from s
-    private edgeTo: IndexedByString<Vertex<V>> = {}     // edgeTo[v] = last edge on path from s to v
+    private marked = new StringMap<boolean>()       // marked[v] = true if v is reachable from s
+    private edgeTo = new StringMap<Vertex<V>>()     // edgeTo[v] = last edge on path from s to v
 
     constructor(G: Digraph<V>, private source: Vertex<V>) {
         this.dfs(G, source)
@@ -27,14 +28,14 @@ export class DepthFirstDirectedPaths<V> implements DirectedPaths<V> {
 
     private dfs(G: Digraph<V>, source: Vertex<V>): void {
         const s = newStack<Vertex<V>>()
-        this.marked[source.key] = true
+        this.marked.set(source.key, true)
         s.push(source)
         while (!s.isEmpty()) {
             const v = s.pop()
             G.adjacent(v).forEach(w => {
                 if (!isMarked(w, this.marked)) {
-                    this.edgeTo[w.key] = v
-                    this.marked[w.key] = true
+                    this.edgeTo.set(w.key, v)
+                    this.marked.set(w.key, true)
                     s.push(w)
                 }
             })
@@ -50,7 +51,7 @@ export class DepthFirstDirectedPaths<V> implements DirectedPaths<V> {
             return emptyCollection()
         }
         const path = newStack<Vertex<V>>()
-        for (let x = v; x.key !== this.source.key; x = this.edgeTo[x.key]) {
+        for (let x = v; x.key !== this.source.key; x = this.edgeTo.get(x.key)!) {
             path.push(x)
         }
         path.push(this.source)
