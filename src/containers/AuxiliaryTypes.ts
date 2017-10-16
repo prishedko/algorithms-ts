@@ -1,10 +1,14 @@
+import { AbstractIterator } from '../commons/AbstractIterator'
+
 export type Node<E> = undefined | {
     element: E
     next: Node<E>
 }
 
-export class NodesIterator<E> {
-    constructor(private current: Node<E>) {}
+export class NodesIterator<E> extends AbstractIterator<E> {
+    constructor(private current: Node<E>) {
+        super()
+    }
 
     hasNext(): boolean {
         return !!this.current

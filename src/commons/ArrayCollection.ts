@@ -1,5 +1,8 @@
 import { CommonsAPI } from './api'
+import { ArrayIterator } from './ArrayIterator'
+
 import Collection = CommonsAPI.Collection
+import CollectionIterator = CommonsAPI.CollectionIterator
 
 /**
  * Implementation of <tt>Collection</tt> that uses an array to store elements. Can either copy given array or reuse it -
@@ -34,5 +37,21 @@ export class ArrayCollection<E> implements Collection<E> {
 
     size(): number {
         return this.array.length
+    }
+
+    find(p: (e: E) => boolean): E | undefined {
+        return this.array.find(p)
+    }
+
+    every(p: (e: E) => boolean): boolean {
+        return this.array.every(p)
+    }
+
+    some(p: (e: E) => boolean): boolean {
+        return this.array.some(p)
+    }
+
+    iterator(): CollectionIterator<E> {
+        return new ArrayIterator(this.array)
     }
 }

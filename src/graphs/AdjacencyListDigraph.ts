@@ -1,17 +1,52 @@
 import { GraphsAPI } from './api'
 import { CommonsAPI } from '../commons/api'
 import { CommonsBuilder } from '../commons/builders'
-import { StringMap } from './AuxiliaryTypes'
+import { Entry, StringMap } from './AuxiliaryTypes'
+import { AbstractIterator } from '../commons/AbstractIterator'
+import { AbstractCollection } from '../commons/AbstractCollection'
+
 import Digraph = GraphsAPI.Digraph
 import Vertex = GraphsAPI.Vertex
 import Collection = CommonsAPI.Collection
 import emptyCollection = CommonsBuilder.emptyCollection
 import collectionFromArray = CommonsBuilder.collectionFromArray
 import VerticesPair = GraphsAPI.VerticesPair
+import CollectionIterator = CommonsAPI.CollectionIterator
 
 type ListNode<V> = {
-    vertex: Vertex<V>
-    adjecent: Vertex<V>[]
+    readonly vertex: Vertex<V>
+    readonly adjecent: Vertex<V>[]
+}
+
+class VerticesIterator<V> extends AbstractIterator<Vertex<V>> {
+    private delegatee: CollectionIterator<Entry<ListNode<V>>>
+
+    constructor(adjacencyList: StringMap<ListNode<V>>) {
+        super()
+        this.delegatee = adjacencyList.iterator()
+    }
+
+    hasNext(): boolean {
+        return this.delegatee.hasNext()
+    }
+
+    next(): GraphsAPI.Vertex<V> {
+        return this.delegatee.next().value.vertex
+    }
+}
+
+class VerticesCollection<V> extends AbstractCollection<Vertex<V>> {
+    constructor(private verticesAmount: () => number, private adjacencyList: StringMap<ListNode<V>>) {
+        super()
+    }
+
+    size(): number {
+        return this.verticesAmount()
+    }
+
+    iterator(): CommonsAPI.CollectionIterator<GraphsAPI.Vertex<V>> {
+        return new VerticesIterator(this.adjacencyList)
+    }
 }
 
 /**
@@ -24,7 +59,7 @@ type ListNode<V> = {
  * see <a href="http://algs4.cs.princeton.edu/42directed">Section 4.2</a> of
  * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
-export class AdjacencyListDigraph<V> implements Digraph<V>, Collection<Vertex<V>> {
+export class AdjacencyListDigraph<V> implements Digraph<V> {
     private adjacencyList = new StringMap<ListNode<V>>()
     private verticesAmount: number = 0
     private edgesAmount: number = 0
@@ -85,7 +120,7 @@ export class AdjacencyListDigraph<V> implements Digraph<V>, Collection<Vertex<V>
 
     reverse(): GraphsAPI.Digraph<V> {
         const result = new AdjacencyListDigraph<V>()
-        this.forEach(v => {
+        this.asVerticesCollection().forEach(v => {
             this.adjacent(v).forEach(w => result.addEdge(w, v))
         })
         return result
@@ -103,78 +138,14 @@ export class AdjacencyListDigraph<V> implements Digraph<V>, Collection<Vertex<V>
     }
 
     asVerticesCollection(): Collection<Vertex<V>> {
-        return this
+        return new VerticesCollection(() => this.v(), this.adjacencyList)
     }
 
     asEdgesCollection(): Collection<VerticesPair<V>> {
-        return new EdgesCollection(this.adjacencyList, () => this.edgesAmount)
-    }
-
-    map<T>(f: (e: GraphsAPI.Vertex<V>) => T): Collection<T> {
-        const acc: T[] = []
-        this.forEach(v => acc.push(f(v)))
-        return collectionFromArray(acc, false)
-    }
-
-    filter(p: (e: GraphsAPI.Vertex<V>) => boolean): Collection<GraphsAPI.Vertex<V>> {
-        const acc: Vertex<V>[] = []
-        this.forEach(v => {
-            if (p(v)) {
-                acc.push(v)
-            }
+        const edges: VerticesPair<V>[] = []
+        this.asVerticesCollection().forEach(v => {
+            this.adjacent(v).forEach(w => edges.push([v, w]))
         })
-        return collectionFromArray(acc, false)
-    }
-
-    forEach(f: (e: GraphsAPI.Vertex<V>) => void): void {
-        this.adjacencyList.forEach((_, node) => f(node.vertex))
-    }
-
-    reduce<A>(r: (accumulator: A, currentElement: GraphsAPI.Vertex<V>) => A, initialValue: A): A {
-        let acc = initialValue
-        this.forEach(v => acc = r(acc, v))
-        return acc
-    }
-
-    size(): number {
-        return this.v()
-    }
-}
-
-class EdgesCollection<V> implements Collection<VerticesPair<V>> {
-
-    constructor(private adjacencyList: StringMap<ListNode<V>>, private edgesAmount: () => number) {}
-
-    map<T>(f: (e: VerticesPair<V>) => T): Collection<T> {
-        const result: T[] = []
-        this.forEach(p => result.push(f(p)))
-        return collectionFromArray(result, false)
-    }
-
-    filter(p: (e: VerticesPair<V>) => boolean): Collection<VerticesPair<V>> {
-        const result: VerticesPair<V>[] = []
-        this.forEach(pair => {
-            if (p(pair)) {
-                result.push(pair)
-            }
-        })
-        return collectionFromArray(result, false)
-    }
-
-    forEach(f: (e: VerticesPair<V>) => void): void {
-        this.adjacencyList.forEach((_, node) => {
-            const v = node.vertex
-            node.adjecent.forEach(w => f([v, w]))
-        })
-    }
-
-    reduce<A>(r: (accumulator: A, currentElement: VerticesPair<V>) => A, initialValue: A): A {
-        let acc = initialValue
-        this.forEach(p => acc = r(acc, p))
-        return acc
-    }
-
-    size(): number {
-        return this.edgesAmount()
+        return collectionFromArray(edges, false)
     }
 }

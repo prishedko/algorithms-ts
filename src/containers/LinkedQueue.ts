@@ -1,9 +1,10 @@
 import { ContainersAPI } from './api'
 import { CommonsAPI } from '../commons/api'
-import { CommonsBuilder } from '../commons/builders'
 import { Node, NodesIterator } from './AuxiliaryTypes'
+import { AbstractCollection } from '../commons/AbstractCollection'
+
 import Queue = ContainersAPI.Queue
-import collectionFromArray = CommonsBuilder.collectionFromArray
+import CollectionIterator = CommonsAPI.CollectionIterator
 import Collection = CommonsAPI.Collection
 
 /**
@@ -14,7 +15,7 @@ import Collection = CommonsAPI.Collection
  * For additional documentation, see <a href="http://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
  * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
-export class LinkedQueue<E> implements Queue<E>, Collection<E> {
+export class LinkedQueue<E> extends AbstractCollection<E> implements Queue<E> {
     private first: Node<E> = undefined  // beginning of queue
     private last: Node<E> = undefined   // end of queue
     private n: number = 0               // number of elements on queue
@@ -64,41 +65,15 @@ export class LinkedQueue<E> implements Queue<E>, Collection<E> {
         }
     }
 
+    asCollection(): Collection<E> {
+        return this
+    }
+
     toString(): string {
         return this.reduce((acc, e) => acc === '' ? String(e) : acc + ' ' + e, '')
     }
 
-    asCollection(): CommonsAPI.Collection<E> {
-        return this
-    }
-
-    map<T>(f: (e: E) => T): Collection<T> {
-        const result: T[] = []
-        this.forEach(e => result.push(f(e)))
-        return collectionFromArray(result, false)
-    }
-
-    filter(p: (e: E) => boolean): Collection<E> {
-        const result: E[] = []
-        this.forEach(e => {
-            if (p(e)) {
-                result.push(e)
-            }
-        })
-        return collectionFromArray(result, false)
-    }
-
-    forEach(f: (e: E) => void): void {
-        const iter = new NodesIterator(this.first)
-        while (iter.hasNext()) {
-            const element = iter.next()
-            f(element)
-        }
-    }
-
-    reduce<A>(r: (accumulator: A, currentElement: E) => A, initialValue: A): A {
-        let result = initialValue
-        this.forEach(e => result = r(result, e))
-        return result
+    iterator(): CollectionIterator<E> {
+        return new NodesIterator(this.first)
     }
 }

@@ -98,7 +98,7 @@ export namespace GraphsAPI {
          */
         asVerticesCollection(): Collection<Vertex<V>>
         /**
-         * Returns collection backed by edges of this graph. Time complexity is O(1).
+         * Returns collection backed by edges of this graph. Time complexity is O(V + E).
          * @return {CommonsAPI.Collection<GraphsAPI.Vertex<V>>} collection of edges.
          */
         asEdgesCollection(): Collection<VerticesPair<V>>
@@ -201,5 +201,23 @@ export namespace GraphsAPI {
          * @return the vertices in reverse postorder, as an iterable of vertices
          */
         reversePost(): Collection<Vertex<V>>
+    }
+
+    /**
+     * The <code>DirectedEulerianCycle</code> class represents a data type for finding an Eulerian cycle or path in a
+     * digraph. An <tt>Eulerian cycle</tt> is a cycle (not necessarily simple) that uses every edge in the digraph
+     * exactly once.
+     */
+    export interface DirectedEulerianCycle<V> {
+        /**
+         * Returns the sequence of vertices on an Eulerian cycle.
+         * @return the sequence of vertices on an Eulerian cycle or empty collection if no such cycle.
+         */
+        cycle(): Collection<Vertex<V>>
+        /**
+         * Returns true if the digraph has an Eulerian cycle.
+         * @return <code>true</code> if the digraph has an Eulerian cycle; <code>false</code> otherwise.
+         */
+        hasEulerianCycle(): boolean
     }
 }

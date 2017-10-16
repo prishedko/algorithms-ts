@@ -6,15 +6,12 @@ import { CommonsBuilder } from '../commons/builders'
 import DirectedCycle = GraphsAPI.DirectedCycle
 import Vertex = GraphsAPI.Vertex
 import Digraph = GraphsAPI.Digraph
-import Stack = ContainersAPI.Stack
 import newStack = ContainersBuilders.newStack
 import Collection = CommonsAPI.Collection
 import emptyCollection = CommonsBuilder.emptyCollection
-import { isMarked, StringMap } from './AuxiliaryTypes'
+import { isMarked, StringMap, Cycle } from './AuxiliaryTypes'
 import Queue = ContainersAPI.Queue
 import newQueue = ContainersBuilders.newQueue
-
-type Cycle<V> = Stack<Vertex<V>> | undefined
 
 /**
  * This implementation uses a nonrecursive, queue-based algorithm. The constructor takes time proportional to <tt>V</tt>

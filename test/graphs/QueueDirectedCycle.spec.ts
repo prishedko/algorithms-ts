@@ -1,8 +1,9 @@
 import { GraphsBuilders } from '../../src'
 import { tinyDG } from './tinyDG'
 import { tinyDAG } from './tinyDAG'
+import { QueueDirectedCycle } from '../../src/graphs/QueueDirectedCycle'
+
 import digraphFromEdgesKeys = GraphsBuilders.digraphFromEdgesKeys
-import directedCycle = GraphsBuilders.directedCycle
 import vertex = GraphsBuilders.vertex
 import digraph = GraphsBuilders.digraph
 import { GraphsAPI, CommonsAPI } from '../../src'
@@ -13,17 +14,17 @@ function cycleToString<V>(cycle: Collection<Vertex<V>>): string {
     return cycle.reduce((acc, e) => acc === '' ? e.key : acc + '->' + e.key, '')
 }
 
-describe('DirectedCycle', () => {
+describe('QueueDirectedCycle', () => {
     describe('testing data', () => {
         it('should find cycle in tinyDG', () => {
             const dg = digraphFromEdgesKeys(tinyDG)
-            const dc = directedCycle(dg)
+            const dc = new QueueDirectedCycle(dg)
             expect(dc.hasCycle()).toBe(true)
             expect(cycleToString(dc.cycle())).toBe('12->9->11->12')
         })
         it('should not find cycle in tinyDAG', () => {
             const dag = digraphFromEdgesKeys(tinyDAG)
-            const dc = directedCycle(dag)
+            const dc = new QueueDirectedCycle(dag)
             expect(dc.hasCycle()).toBe(false)
         })
     })
@@ -36,7 +37,7 @@ describe('DirectedCycle', () => {
         const dg = digraph<string>()
 
         it('should not detect any cycle in empty DG', () => {
-            const dc = directedCycle(dg)
+            const dc = new QueueDirectedCycle(dg)
             expect(dc.hasCycle()).toBe(false)
             expect(dc.cycle().size()).toBe(0)
         })
@@ -52,14 +53,14 @@ describe('DirectedCycle', () => {
                 .addEdge(c, d)
                 .addEdge(c, e)
                 .addEdge(d, e)
-            const dc = directedCycle(dg)
+            const dc = new QueueDirectedCycle(dg)
             expect(dc.hasCycle()).toBe(false)
             expect(dc.cycle().size()).toBe(0)
         })
 
         it('should detect reflective cicle', () => {
             dg.addEdge(a, a)
-            const dc = directedCycle(dg)
+            const dc = new QueueDirectedCycle(dg)
             expect(dc.hasCycle()).toBe(true)
             expect(cycleToString(dc.cycle())).toBe('a->a')
         })
@@ -69,7 +70,7 @@ describe('DirectedCycle', () => {
                 .addEdge(b, c)
                 .addEdge(d, e)
                 .addEdge(c, a)
-            const dc = directedCycle(dg)
+            const dc = new QueueDirectedCycle(dg)
             expect(dc.hasCycle()).toBe(true)
             expect(cycleToString(dc.cycle())).toBe('c->a->b->c')
         })
@@ -84,7 +85,7 @@ describe('DirectedCycle', () => {
             const cycles = new Set<string>()
                 .add('e->b->c->d->e')
                 .add('d->a->b->c->d')
-            const dc = directedCycle(dg)
+            const dc = new QueueDirectedCycle(dg)
             expect(dc.hasCycle()).toBe(true)
             expect(cycles.has(cycleToString(dc.cycle()))).toBe(true)
         })

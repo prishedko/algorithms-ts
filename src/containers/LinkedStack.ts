@@ -1,9 +1,10 @@
 import { ContainersAPI } from './api'
 import { CommonsAPI } from '../commons/api'
-import { CommonsBuilder } from '../commons/builders'
 import { Node, NodesIterator } from './AuxiliaryTypes'
+import { AbstractCollection } from '../commons/AbstractCollection'
+
 import Stack = ContainersAPI.Stack
-import collectionFromArray = CommonsBuilder.collectionFromArray
+import CollectionIterator = CommonsAPI.CollectionIterator
 import Collection = CommonsAPI.Collection
 
 /**
@@ -12,7 +13,7 @@ import Collection = CommonsAPI.Collection
  * For additional documentation, see <a href="/algs4/13stacks">Section 1.3</a> of
  * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
-export class LinkedStack<E> implements Stack<E>, Collection<E> {
+export class LinkedStack<E> extends AbstractCollection<E> implements Stack<E> {
     private stackSize: number = 0
     private topOfStack: Node<E> = undefined
 
@@ -51,41 +52,15 @@ export class LinkedStack<E> implements Stack<E>, Collection<E> {
         return this.reduce((acc, e) => acc === '' ? String(e) : acc + ' ' + e, '')
     }
 
-    asCollection(): CommonsAPI.Collection<E> {
+    asCollection(): Collection<E> {
         return this
-    }
-
-    map<T>(f: (e: E) => T): Collection<T> {
-        const result: T[] = []
-        this.forEach(e => result.push(f(e)))
-        return collectionFromArray(result, false)
-    }
-
-    filter(p: (e: E) => boolean): Collection<E> {
-        const result: E[] = []
-        this.forEach(e => {
-            if (p(e)) {
-                result.push(e)
-            }
-        })
-        return collectionFromArray(result, false)
-    }
-
-    forEach(f: (e: E) => void): void {
-        const iter = new NodesIterator(this.topOfStack)
-        while (iter.hasNext()) {
-            const element = iter.next()
-            f(element)
-        }
-    }
-
-    reduce<A>(r: (accumulator: A, currentElement: E) => A, initialValue: A): A {
-        let result = initialValue
-        this.forEach(e => result = r(result, e))
-        return result
     }
 
     size(): number {
         return this.stackSize
+    }
+
+    iterator(): CollectionIterator<E> {
+        return new NodesIterator(this.topOfStack)
     }
 }

@@ -39,5 +39,52 @@ export namespace CommonsAPI {
          * @return {number} amount of elements in this container.
          */
         size(): number
+        /**
+         * Returns the value of the first element in the array that satisfies the provided predicate. Otherwise
+         * undefined is returned.
+         * @param {(e: E) => boolean} p predicate to check elements.
+         * @return {E} first found element or undefined.
+         */
+        find(p: (e: E) => boolean): E | undefined
+        /**
+         * Tests whether all elements in the array pass the given predicate.
+         * @param {(e: E) => boolean} p predicate to check elements.
+         * @return {boolean} <code>true</code> if for every element the predicate returns <code>true</code>.
+         */
+        every(p: (e: E) => boolean): boolean
+        /**
+         * Checks whether there is an element that passes given predicate.
+         * @param {(e: E) => boolean} p predicate to check elements.
+         * @return {boolean} <code>true</code> if there is an element for which the predicate returns <code>true</code>.
+         */
+        some(p: (e: E) => boolean): boolean
+        /**
+         * Returns new <tt>CollectionIterator</tt> to iterate over <code>this</code> collection.
+         * @return {CommonsAPI.CollectionIterator<E>} new instance of iterator for <code>this</code> collection.
+         */
+        iterator(): CollectionIterator<E>
+    }
+    /**
+     * An iterator over a collection.
+     */
+    export interface CollectionIterator<E> {
+        /**
+         * Returns <code>true</code> if the iteration has more elements. (In other words, returns <code>true</code> if
+         * <code>next()</code> would return an element rather than throwing an error.)
+         * @return {boolean} <code>true</code> if the iteration has more elements
+         */
+        hasNext(): boolean
+        /**
+         * Returns the next element in the iteration.
+         * @return {E} the next element in the iteration.
+         * @throws {Error('No such element')} if the iteration has no more elements
+         */
+        next(): E
+        /**
+         * Executes the given function for each remaining element until all elements have been processed or the function
+         * throws an error. Function is applied in the order of iteration, if that order is specified.
+         * @param {(e: E) => void} f function to apply to each remaining element.
+         */
+        forEachRemaining(f: (e: E) => void): void
     }
 }

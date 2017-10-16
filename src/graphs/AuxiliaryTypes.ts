@@ -1,5 +1,14 @@
 import { GraphsAPI } from './api'
+import { ContainersAPI } from '../containers/api'
+import { CommonsAPI } from '../commons/api'
+import { AbstractIterator } from '../commons/AbstractIterator'
+import { ArrayIterator } from '../commons/ArrayIterator'
+
 import Vertex = GraphsAPI.Vertex
+import Stack = ContainersAPI.Stack
+import CollectionIterator = CommonsAPI.CollectionIterator
+
+export type Cycle<V> = Stack<Vertex<V>> | undefined
 
 interface IndexedByString<T> {
     [index: string]: T
@@ -12,6 +21,32 @@ interface IndexedByString<T> {
  */
 export function isInexact(value: any): boolean {
     return value === null || value === undefined
+}
+
+export type Entry<T> = {
+    readonly key: string
+    readonly value: T
+}
+
+class StringMapIterator<T> extends AbstractIterator<Entry<T>> {
+    private keyIterator: CollectionIterator<string>
+
+    constructor(private container: IndexedByString<T>) {
+        super()
+        this.keyIterator = new ArrayIterator(Object.keys(container))
+    }
+
+    hasNext(): boolean {
+        return this.keyIterator.hasNext()
+    }
+
+    next(): Entry<T> {
+        const key = this.keyIterator.next()
+        return {
+            key: key,
+            value: this.container[key]
+        }
+    }
 }
 
 export class StringMap<T> {
@@ -49,6 +84,10 @@ export class StringMap<T> {
 
     forEach(f: (key: string, value: T) => void): void {
         Object.keys(this.container).forEach(key => f(key, this.get(key)!))
+    }
+
+    iterator(): CollectionIterator<Entry<T>> {
+        return new StringMapIterator(this.container)
     }
 }
 

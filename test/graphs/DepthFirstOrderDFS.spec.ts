@@ -1,12 +1,13 @@
 import { GraphsBuilders } from '../../src'
 import { tinyDAG } from './tinyDAG'
+import { DepthFirstOrderDFS } from '../../src/graphs/DepthFirstOrderDFS'
+
 import verkey = GraphsBuilders.verkey
 import digraphFromEdgesKeys = GraphsBuilders.digraphFromEdgesKeys
-import depthFirstOrder = GraphsBuilders.depthFirstOrder
 
-describe('DepthFirstOrder', () => {
+describe('DepthFirstOrderDFS', () => {
     const tiny = digraphFromEdgesKeys(tinyDAG)
-    const dfo = depthFirstOrder(tiny)
+    const dfo = new DepthFirstOrderDFS(tiny)
 
     describe('preorderNumber', () => {
         it('should set correct preorder number', () => {
