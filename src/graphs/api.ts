@@ -220,4 +220,32 @@ export namespace GraphsAPI {
          */
         hasEulerianCycle(): boolean
     }
+
+    /**
+     * Represents a data type for determining a topological order of a directed acyclic graph (DAG). Recall, a digraph
+     * has a topological order if and only if it is a DAG. The <tt>hasOrder</tt> operation determines whether the
+     * digraph has a topological order, and if so, the <tt>order</tt> operation returns one.
+     */
+    export interface TopologicalOrder<V> {
+        /**
+         * Returns a topological order if the digraph has a topologial order, and empty collection otherwise.
+         * @return {CommonsAPI.Collection<GraphsAPI.Vertex<V>>} a topological order of the vertices (as an interable)
+         * if the digraph has a topological order (or equivalently, if the digraph is a DAG), and empty collection
+         * otherwise.
+         */
+        order(): Collection<Vertex<V>>
+        /**
+         * Does the digraph have a topological order?
+         * @return {boolean} <code>true</code> if the digraph has a topological order (or equivalently, if the digraph
+         * is a DAG), and <code>false</code> otherwise.
+         */
+        hasOrder(): boolean
+        /**
+         * The the rank of given vertex in the topological order; -1 if the digraph is not a DAG.
+         * @param {GraphsAPI.Vertex<V>} v vertex
+         * @return {number} the position of the vertex in a topological order of the digraph; -1 if the digraph is not
+         * a DAG.
+         */
+        rank(v: Vertex<V>): number
+    }
 }

@@ -69,6 +69,11 @@ export class StringMap<T> {
         return this.innerGet(key)
     }
 
+    endoSet(key: string, endomap: (v: T | undefined) => T): StringMap<T> {
+        this.set(key, endomap(this.get(key)))
+        return this
+    }
+
     getOrDefault(key: string, defaultValue: T): T {
         const result = this.innerGet(key)
         if (isInexact(result)) {

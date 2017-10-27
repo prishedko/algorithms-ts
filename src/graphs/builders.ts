@@ -7,6 +7,7 @@ import DigraphSearch = GraphsAPI.DigraphSearch
 import { DigraphBFS } from './DigraphBFS'
 import { DigraphDFS } from './DigraphDFS'
 import { DepthFirstOrderDFS } from './DepthFirstOrderDFS'
+import { TopologicalOrderDFS } from './TopologicalOrderDFS'
 
 /**
  * Factory functions for creating instances of graphs' ADTs.
@@ -18,6 +19,7 @@ export namespace GraphsBuilders {
     import VerticesPair = api.VerticesPair
     import DirectedPaths = GraphsAPI.DirectedPaths
     import DepthFirstOrder = GraphsAPI.DepthFirstOrder
+    import TopologicalOrder = GraphsAPI.TopologicalOrder
 
     /**
      * Creates new instance of <tt>Digraph</tt>.
@@ -116,11 +118,20 @@ export namespace GraphsBuilders {
     }
 
     /**
-     * Creates an instance of <code>DepthFirstOrder</code> for given digrapth.
+     * Creates an instance of <code>DepthFirstOrder</code> for given digraph.
      * @param {GraphsBuilders.Digraph<V>} dg digraph to build the order.
      * @return {GraphsAPI.DepthFirstOrder<V>} implementation of <tt>DepthFirstOrder</tt>.
      */
     export function depthFirstOrder<V>(dg: Digraph<V>): DepthFirstOrder<V> {
         return new DepthFirstOrderDFS(dg)
+    }
+
+    /**
+     * Creates an instance of <code>TopologicalOrder</code> for give digraph.
+     * @param {GraphsBuilders.Digraph<V>} dg digraph to build the order.
+     * @return {GraphsAPI.TopologicalOrder<V>} implementation of <tt>TopologicalOrder</tt>.
+     */
+    export function topologicalOrder<V>(dg: Digraph<V>): TopologicalOrder<V> {
+        return new TopologicalOrderDFS(dg)
     }
 }
