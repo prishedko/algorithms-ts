@@ -1,6 +1,7 @@
 import { isMarked, StringMap } from './AuxiliaryTypes'
 import { GraphsAPI } from './api'
 import { ContainersBuilders } from '../containers/builders'
+
 import Vertex = GraphsAPI.Vertex
 import Digraph = GraphsAPI.Digraph
 import newStack = ContainersBuilders.newStack

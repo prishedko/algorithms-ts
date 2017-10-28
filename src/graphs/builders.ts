@@ -11,6 +11,7 @@ import { TopologicalOrderDFS } from './TopologicalOrderDFS'
 import { DirectedEulerianPathDFS } from './DirectedEulerianPathDFS'
 import { DirectedEulerianCycleDFS } from './DirectedEulerianCycleDFS'
 import { GabowSCC } from './GabowSCC'
+import { KosarajuSharirSCC } from './KosarajuSharirSCC'
 
 /**
  * Factory functions for creating instances of graphs' ADTs.
@@ -160,11 +161,21 @@ export namespace GraphsBuilders {
     }
 
     /**
-     * Creates an instance of <code>StronglyConnectedComponents</code> for give digraph.
+     * Creates an instance of <code>StronglyConnectedComponents</code> implementation that uses Gabow algorithm.
      * @param {GraphsBuilders.Digraph<V>} dg digraph to build the order.
      * @return {GraphsAPI.StronglyConnectedComponents<V>} implementation of <tt>StronglyConnectedComponents</tt>.
      */
     export function sccGabow<V>(dg: Digraph<V>): StronglyConnectedComponents<V> {
         return new GabowSCC(dg)
+    }
+
+    /**
+     * Creates an instance of <code>StronglyConnectedComponents</code> implementation that uses Kosaraju-Sharir
+     * algorithm.
+     * @param {GraphsBuilders.Digraph<V>} dg digraph to build the order.
+     * @return {GraphsAPI.StronglyConnectedComponents<V>} implementation of <tt>StronglyConnectedComponents</tt>.
+     */
+    export function sccKosarajuSharir<V>(dg: Digraph<V>): StronglyConnectedComponents<V> {
+        return new KosarajuSharirSCC(dg)
     }
 }
