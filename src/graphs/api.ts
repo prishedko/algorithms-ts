@@ -248,4 +248,23 @@ export namespace GraphsAPI {
          */
         rank(v: Vertex<V>): number
     }
+
+    /**
+     * The <code>DirectedEulerianPath</code> class represents a data type for finding an Eulerian path in a digraph.
+     * An <tt>Eulerian path</tt> is a path (not necessarily simple) that uses every edge in the digraph exactly once.
+     */
+    export interface DirectedEulerianPath<V> {
+        /**
+         * Returns the sequence of vertices on an Eulerian path.
+         * @return {CommonsAPI.Collection<GraphsAPI.Vertex<V>>} the sequence of vertices on an Eulerian path; empty
+         * collection if no such path.
+         */
+        path(): Collection<Vertex<V>>
+
+        /**
+         * Returns <code>true</code> if the digraph has an Eulerian path.
+         * @return {boolean} <code>true</code> if the digraph has an Eulerian path; <code>false</code> otherwise.
+         */
+        hasEulerianPath(): boolean
+    }
 }

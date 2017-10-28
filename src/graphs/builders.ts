@@ -8,6 +8,8 @@ import { DigraphBFS } from './DigraphBFS'
 import { DigraphDFS } from './DigraphDFS'
 import { DepthFirstOrderDFS } from './DepthFirstOrderDFS'
 import { TopologicalOrderDFS } from './TopologicalOrderDFS'
+import { DirectedEulerianPathDFS } from './DirectedEulerianPathDFS'
+import { DirectedEulerianCycleDFS } from './DirectedEulerianCycleDFS'
 
 /**
  * Factory functions for creating instances of graphs' ADTs.
@@ -20,6 +22,8 @@ export namespace GraphsBuilders {
     import DirectedPaths = GraphsAPI.DirectedPaths
     import DepthFirstOrder = GraphsAPI.DepthFirstOrder
     import TopologicalOrder = GraphsAPI.TopologicalOrder
+    import DirectedEulerianPath = GraphsAPI.DirectedEulerianPath
+    import DirectedEulerianCycle = GraphsAPI.DirectedEulerianCycle
 
     /**
      * Creates new instance of <tt>Digraph</tt>.
@@ -127,11 +131,29 @@ export namespace GraphsBuilders {
     }
 
     /**
+     * Creates an instance of <code>DirectedEulerianCycle</code> for give digraph.
+     * @param {GraphsBuilders.Digraph<V>} dg digraph to build the order.
+     * @return {GraphsAPI.DirectedEulerianCycle<V>} implementation of <tt>DirectedEulerianCycle</tt>.
+     */
+    export function directedEulerianCycle<V>(dg: Digraph<V>): DirectedEulerianCycle<V> {
+        return new DirectedEulerianCycleDFS(dg)
+    }
+
+    /**
      * Creates an instance of <code>TopologicalOrder</code> for give digraph.
      * @param {GraphsBuilders.Digraph<V>} dg digraph to build the order.
      * @return {GraphsAPI.TopologicalOrder<V>} implementation of <tt>TopologicalOrder</tt>.
      */
     export function topologicalOrder<V>(dg: Digraph<V>): TopologicalOrder<V> {
         return new TopologicalOrderDFS(dg)
+    }
+
+    /**
+     * Creates an instance of <code>DirectedEulerianPath</code> for give digraph.
+     * @param {GraphsBuilders.Digraph<V>} dg digraph to build the order.
+     * @return {GraphsAPI.DirectedEulerianPath<V>} implementation of <tt>DirectedEulerianPath</tt>.
+     */
+    export function directedEulerianPath<V>(dg: Digraph<V>): DirectedEulerianPath<V> {
+        return new DirectedEulerianPathDFS(dg)
     }
 }

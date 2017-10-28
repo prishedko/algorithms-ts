@@ -69,7 +69,7 @@ export class DirectedEulerianCycleDFS<V> implements DirectedEulerianCycle<V> {
         }
     }
 
-    // returns any non-isolated vertex; -1 if no such vertex
+    // returns any non-isolated vertex; undefined if no such vertex
     private nonIsolatedVertex(G: Digraph<V>): Vertex<V> | undefined {
         return G.asVerticesCollection().find(v => G.outdegree(v) > 0)
     }
