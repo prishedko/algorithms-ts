@@ -12,6 +12,7 @@ import { DirectedEulerianPathDFS } from './DirectedEulerianPathDFS'
 import { DirectedEulerianCycleDFS } from './DirectedEulerianCycleDFS'
 import { GabowSCC } from './GabowSCC'
 import { KosarajuSharirSCC } from './KosarajuSharirSCC'
+import { TarjanSCC } from './TarjanSCC'
 
 /**
  * Factory functions for creating instances of graphs' ADTs.
@@ -177,5 +178,14 @@ export namespace GraphsBuilders {
      */
     export function sccKosarajuSharir<V>(dg: Digraph<V>): StronglyConnectedComponents<V> {
         return new KosarajuSharirSCC(dg)
+    }
+
+    /**
+     * Creates an instance of <code>StronglyConnectedComponents</code> implementation that uses Tarjan algorithm.
+     * @param {GraphsBuilders.Digraph<V>} dg digraph to build the order.
+     * @return {GraphsAPI.StronglyConnectedComponents<V>} implementation of <tt>StronglyConnectedComponents</tt>.
+     */
+    export function sccTarjan<V>(dg: Digraph<V>): StronglyConnectedComponents<V> {
+        return new TarjanSCC(dg)
     }
 }

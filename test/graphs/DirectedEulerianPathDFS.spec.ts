@@ -1,8 +1,8 @@
 import { GraphsBuilders } from '../../src'
-import { eulerianCycle } from './eulerianCycleDGs'
-import { eulerianPath } from './eulerianPathDGs'
-import { tinyDAG } from './tinyDAG'
-import { tinyDG } from './tinyDG'
+import { eulerianCycle } from '../data/eulerianCycleDGs'
+import { eulerianPath } from '../data/eulerianPathDGs'
+import { tinyDAG } from '../data/tinyDAG'
+import { tinyDG } from '../data/tinyDG'
 import { DirectedEulerianPathDFS } from '../../src/graphs/DirectedEulerianPathDFS'
 
 import digraphFromEdgesKeys = GraphsBuilders.digraphFromEdgesKeys

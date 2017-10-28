@@ -1,6 +1,6 @@
 import { GraphsBuilders } from '../../src'
-import { tinyDG } from './tinyDG'
-import { tinyDAG } from './tinyDAG'
+import { tinyDG } from '../data/tinyDG'
+import { tinyDAG } from '../data/tinyDAG'
 import { QueueDirectedCycle } from '../../src/graphs/QueueDirectedCycle'
 import { GraphsAPI, CommonsAPI } from '../../src'
 

@@ -1,6 +1,6 @@
 import { GraphsAPI, GraphsBuilders } from '../../src'
 import { CommonsAPI } from '../../src/commons/api'
-import { tinyDG } from './tinyDG'
+import { tinyDG } from '../data/tinyDG'
 import { BreadthFirstDirectedPaths } from '../../src/graphs/BreadthFirstDirectedPaths'
 
 import Vertex = GraphsAPI.Vertex

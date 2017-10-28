@@ -1,5 +1,5 @@
 import { GraphsBuilders, GraphsAPI } from '../../src'
-import { tinyDG } from './tinyDG'
+import { tinyDG } from '../data/tinyDG'
 import digraph = GraphsBuilders.digraph
 import vertex = GraphsBuilders.vertex
 import verkey = GraphsBuilders.verkey

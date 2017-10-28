@@ -1,5 +1,5 @@
 import { GraphsBuilders } from '../../src'
-import { tinyDAG } from './tinyDAG'
+import { tinyDAG } from '../data/tinyDAG'
 import { DepthFirstOrderDFS } from '../../src/graphs/DepthFirstOrderDFS'
 
 import verkey = GraphsBuilders.verkey
