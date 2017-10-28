@@ -10,6 +10,7 @@ import { DepthFirstOrderDFS } from './DepthFirstOrderDFS'
 import { TopologicalOrderDFS } from './TopologicalOrderDFS'
 import { DirectedEulerianPathDFS } from './DirectedEulerianPathDFS'
 import { DirectedEulerianCycleDFS } from './DirectedEulerianCycleDFS'
+import { GabowSCC } from './GabowSCC'
 
 /**
  * Factory functions for creating instances of graphs' ADTs.
@@ -24,6 +25,7 @@ export namespace GraphsBuilders {
     import TopologicalOrder = GraphsAPI.TopologicalOrder
     import DirectedEulerianPath = GraphsAPI.DirectedEulerianPath
     import DirectedEulerianCycle = GraphsAPI.DirectedEulerianCycle
+    import StronglyConnectedComponents = GraphsAPI.StronglyConnectedComponents
 
     /**
      * Creates new instance of <tt>Digraph</tt>.
@@ -155,5 +157,14 @@ export namespace GraphsBuilders {
      */
     export function directedEulerianPath<V>(dg: Digraph<V>): DirectedEulerianPath<V> {
         return new DirectedEulerianPathDFS(dg)
+    }
+
+    /**
+     * Creates an instance of <code>StronglyConnectedComponents</code> for give digraph.
+     * @param {GraphsBuilders.Digraph<V>} dg digraph to build the order.
+     * @return {GraphsAPI.StronglyConnectedComponents<V>} implementation of <tt>StronglyConnectedComponents</tt>.
+     */
+    export function sccGabow<V>(dg: Digraph<V>): StronglyConnectedComponents<V> {
+        return new GabowSCC(dg)
     }
 }

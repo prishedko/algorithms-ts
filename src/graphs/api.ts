@@ -267,4 +267,35 @@ export namespace GraphsAPI {
          */
         hasEulerianPath(): boolean
     }
+
+    /**
+     * Represents a data type for determining the strong components in a digraph. The <tt>id</tt> operation determines
+     * in which strong component a given vertex lies; the <tt>areStronglyConnected</tt> operation determines whether
+     * two vertices are in the same strong component; and the <tt>count</tt> operation determines the number of strong
+     * components.
+     * The <tt>component identifier</tt> of a component is one of the vertices in the strong component: two vertices
+     * have the same component identifier if and only if they are in the same strong component.
+     */
+    export interface StronglyConnectedComponents<V> {
+        /**
+         * Returns the number of strong components.
+         * @return {number} the number of strong components
+         */
+        count(): number
+        /**
+         * Are vertices <code>v</code> and <code>w</code> in the same strong component?
+         * @param {GraphsAPI.Vertex<V>} v one vertex
+         * @param {GraphsAPI.Vertex<V>} w the other vertex
+         * @return {boolean} <code>true</code> if vertices <code>v</code> and <code>w</code> are in the same strong
+         * component, and <code>false</code> otherwise
+         */
+        stronglyConnected(v: Vertex<V>, w: Vertex<V>): boolean
+        /**
+         * Returns the component id of the strong component containing vertex <code>v</code>.
+         * @param {GraphsAPI.Vertex<V>} v the vertex.
+         * @return {number} the component id of the strong component containing vertex <code>v</code> or -1 if the
+         * vertex is not in the graph.
+         */
+        id(v: Vertex<V>): number
+    }
 }

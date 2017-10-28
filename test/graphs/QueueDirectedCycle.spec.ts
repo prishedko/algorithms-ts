@@ -2,11 +2,11 @@ import { GraphsBuilders } from '../../src'
 import { tinyDG } from './tinyDG'
 import { tinyDAG } from './tinyDAG'
 import { QueueDirectedCycle } from '../../src/graphs/QueueDirectedCycle'
+import { GraphsAPI, CommonsAPI } from '../../src'
 
 import digraphFromEdgesKeys = GraphsBuilders.digraphFromEdgesKeys
 import vertex = GraphsBuilders.vertex
 import digraph = GraphsBuilders.digraph
-import { GraphsAPI, CommonsAPI } from '../../src'
 import Vertex = GraphsAPI.Vertex
 import Collection = CommonsAPI.Collection
 
