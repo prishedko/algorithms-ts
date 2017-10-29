@@ -3,7 +3,6 @@ import { AdjacencyListDigraph } from './AdjacencyListDigraph'
 import { QueueDirectedCycle } from './QueueDirectedCycle'
 import { BreadthFirstDirectedPaths } from './BreadthFirstDirectedPaths'
 import { DepthFirstDirectedPaths } from './DepthFirstDirectedPaths'
-import DigraphSearch = GraphsAPI.DigraphSearch
 import { DigraphBFS } from './DigraphBFS'
 import { DigraphDFS } from './DigraphDFS'
 import { DepthFirstOrderDFS } from './DepthFirstOrderDFS'
@@ -13,6 +12,9 @@ import { DirectedEulerianCycleDFS } from './DirectedEulerianCycleDFS'
 import { GabowSCC } from './GabowSCC'
 import { KosarajuSharirSCC } from './KosarajuSharirSCC'
 import { TarjanSCC } from './TarjanSCC'
+import { CommonsAPI } from '../commons/api'
+import { DirectedDFS } from './DirectedDFS'
+import { TransitiveClosureDFS } from './TransitiveClosureDFS'
 
 /**
  * Factory functions for creating instances of graphs' ADTs.
@@ -28,6 +30,10 @@ export namespace GraphsBuilders {
     import DirectedEulerianPath = GraphsAPI.DirectedEulerianPath
     import DirectedEulerianCycle = GraphsAPI.DirectedEulerianCycle
     import StronglyConnectedComponents = GraphsAPI.StronglyConnectedComponents
+    import DigraphSearch = GraphsAPI.DigraphSearch
+    import Collection = CommonsAPI.Collection
+    import Directed = GraphsAPI.Directed
+    import TransitiveClosure = GraphsAPI.TransitiveClosure
 
     /**
      * Creates new instance of <tt>Digraph</tt>.
@@ -187,5 +193,24 @@ export namespace GraphsBuilders {
      */
     export function sccTarjan<V>(dg: Digraph<V>): StronglyConnectedComponents<V> {
         return new TarjanSCC(dg)
+    }
+
+    /**
+     * Creates an instance of <code>Directed</code> for give digraph.
+     * @param {GraphsBuilders.Digraph<V>} dg digraph to build the Directed instance.
+     * @param {CommonsAPI.Collection<GraphsBuilders.Vertex<V>>} sources source vertices.
+     * @return {GraphsAPI.Directed<V>} implementation of <tt>Directed</tt>.
+     */
+    export function directed<V>(dg: Digraph<V>, sources: Collection<Vertex<V>>): Directed<V> {
+        return new DirectedDFS(dg, sources)
+    }
+
+    /**
+     * Creates an instance of <code>TransitiveClosure</code> for give digraph.
+     * @param {GraphsBuilders.Digraph<V>} dg digraph to build the closure.
+     * @return {GraphsAPI.DirectedEulerianPath<V>} implementation of <tt>TransitiveClosure</tt>.
+     */
+    export function transitiveClosure<V>(dg: Digraph<V>): TransitiveClosure<V> {
+        return new TransitiveClosureDFS(dg)
     }
 }

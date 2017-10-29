@@ -298,4 +298,37 @@ export namespace GraphsAPI {
          */
         id(v: Vertex<V>): number
     }
+
+    /**
+     *  The <code>Directed</code> class represents a data type for determining the vertices reachable from a given
+     *  source vertex <tt>s</tt> (or set of source vertices) in a digraph.
+     */
+    export interface Directed<V> {
+        /**
+         * Is there a directed path from the source vertex (or any of the source vertices) and vertex <code>v</code>?
+         * @param {GraphsAPI.Vertex<V>} v the vertex
+         * @return {boolean} <code>true</code> if there is a directed path, <code>false</code> otherwise.
+         */
+        marked(v: Vertex<V>): boolean
+        /**
+         * Returns the number of vertices reachable from the source vertex (or source vertices).
+         * @return {number} the number of vertices reachable from the source vertex (or source vertices).
+         */
+        count(): number
+    }
+
+    /**
+     *  The <code>TransitiveClosure</code> class represents a data type for computing the transitive closure of a
+     *  digraph.
+     */
+    export interface TransitiveClosure<V> {
+        /**
+         * Is there a directed path from vertex <code>source</code> to vertex <code>destination</code> in the digraph?
+         * @param {GraphsAPI.Vertex<V>} source the source vertex
+         * @param {GraphsAPI.Vertex<V>} destination the target vertex
+         * @return {boolean} <code>true</code> if there is a directed path from <code>source</code> to <code>w</code>,
+         * <code>false</code> otherwise.
+         */
+        reachable(source: Vertex<V>, destination: Vertex<V>): boolean
+    }
 }
