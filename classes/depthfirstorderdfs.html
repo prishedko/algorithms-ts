@@ -910,10 +910,19 @@ img { max-width: 100%; }
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+			<a href="abstractcollection.html" class="tsd-kind-icon">Abstract<wbr>Collection</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+			<a href="abstractiterator.html" class="tsd-kind-icon">Abstract<wbr>Iterator</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
 			<a href="adjacencylistdigraph.html" class="tsd-kind-icon">Adjacency<wbr>List<wbr>Digraph</a>
 		</li>
 		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
 			<a href="arraycollection.html" class="tsd-kind-icon">Array<wbr>Collection</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+			<a href="arrayiterator.html" class="tsd-kind-icon">Array<wbr>Iterator</a>
 		</li>
 		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
 			<a href="breadthfirstdirectedpaths.html" class="tsd-kind-icon">Breadth<wbr>First<wbr>Directed<wbr>Paths</a>
@@ -975,6 +984,21 @@ img { max-width: 100%; }
 			<a href="digraphdfs.html" class="tsd-kind-icon">DigraphDFS</a>
 		</li>
 		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+			<a href="directeddfs.html" class="tsd-kind-icon">DirectedDFS</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+			<a href="directedeuleriancycledfs.html" class="tsd-kind-icon">Directed<wbr>Eulerian<wbr>CycleDFS</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+			<a href="directedeulerianpathdfs.html" class="tsd-kind-icon">Directed<wbr>Eulerian<wbr>PathDFS</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+			<a href="gabowscc.html" class="tsd-kind-icon">GabowSCC</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+			<a href="kosarajusharirscc.html" class="tsd-kind-icon">Kosaraju<wbr>SharirSCC</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
 			<a href="linkedqueue.html" class="tsd-kind-icon">Linked<wbr>Queue</a>
 		</li>
 		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
@@ -988,6 +1012,21 @@ img { max-width: 100%; }
 		</li>
 		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
 			<a href="stringmap.html" class="tsd-kind-icon">String<wbr>Map</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+			<a href="tarjanscc.html" class="tsd-kind-icon">TarjanSCC</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+			<a href="topologicalorderdfs.html" class="tsd-kind-icon">Topological<wbr>OrderDFS</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+			<a href="transitiveclosuredfs.html" class="tsd-kind-icon">Transitive<wbr>ClosureDFS</a>
+		</li>
+		<li class=" tsd-kind-type-alias tsd-is-external">
+			<a href="../globals.html#cycle" class="tsd-kind-icon">Cycle</a>
+		</li>
+		<li class=" tsd-kind-type-alias tsd-is-external">
+			<a href="../globals.html#entry" class="tsd-kind-icon">Entry</a>
 		</li>
 		<li class=" tsd-kind-type-alias tsd-is-external">
 			<a href="../globals.html#node" class="tsd-kind-icon">Node</a>
@@ -1009,10 +1048,6 @@ img { max-width: 100%; }
 						(in the worst case), where <tt>V</tt> is the number of vertices and <tt>E</tt> is the number of edges.
 					Afterwards, the <tt>preorder</tt> and <tt>postorder</tt> operations take constant time, and</p>
 					<p><tt>reverse postorder</tt> operation takes take time proportional to <tt>V</tt>.</p>
-					<p><p>
-							For additional documentation,
-							see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
-						<i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.</p>
 				</div>
 			</div>
 		</section>
@@ -1086,7 +1121,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/graphs/DepthFirstOrderDFS.ts#L29">graphs/DepthFirstOrderDFS.ts:29</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/DepthFirstOrderDFS.ts#L25">graphs/DepthFirstOrderDFS.ts:25</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1118,7 +1153,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">marked<span class="tsd-signature-symbol">:</span> <a href="stringmap.html" class="tsd-signature-type">StringMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new StringMap&lt;boolean&gt;()</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/graphs/DepthFirstOrderDFS.ts#L23">graphs/DepthFirstOrderDFS.ts:23</a></li>
+						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/DepthFirstOrderDFS.ts#L19">graphs/DepthFirstOrderDFS.ts:19</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1128,7 +1163,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">post<wbr>Counter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/graphs/DepthFirstOrderDFS.ts#L29">graphs/DepthFirstOrderDFS.ts:29</a></li>
+						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/DepthFirstOrderDFS.ts#L25">graphs/DepthFirstOrderDFS.ts:25</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1138,7 +1173,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">postorder<span class="tsd-signature-symbol">:</span> <a href="../interfaces/containersapi.queue.html" class="tsd-signature-type">Queue</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;newQueue&lt;Vertex&lt;V&gt;&gt;()</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/graphs/DepthFirstOrderDFS.ts#L27">graphs/DepthFirstOrderDFS.ts:27</a></li>
+						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/DepthFirstOrderDFS.ts#L23">graphs/DepthFirstOrderDFS.ts:23</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1148,7 +1183,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">pre<wbr>Counter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/graphs/DepthFirstOrderDFS.ts#L28">graphs/DepthFirstOrderDFS.ts:28</a></li>
+						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/DepthFirstOrderDFS.ts#L24">graphs/DepthFirstOrderDFS.ts:24</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1158,7 +1193,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">preorder<span class="tsd-signature-symbol">:</span> <a href="../interfaces/containersapi.queue.html" class="tsd-signature-type">Queue</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;newQueue&lt;Vertex&lt;V&gt;&gt;()</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/graphs/DepthFirstOrderDFS.ts#L26">graphs/DepthFirstOrderDFS.ts:26</a></li>
+						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/DepthFirstOrderDFS.ts#L22">graphs/DepthFirstOrderDFS.ts:22</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1168,7 +1203,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">vertices<wbr>Postorder<span class="tsd-signature-symbol">:</span> <a href="stringmap.html" class="tsd-signature-type">StringMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new StringMap&lt;number&gt;()</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/graphs/DepthFirstOrderDFS.ts#L25">graphs/DepthFirstOrderDFS.ts:25</a></li>
+						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/DepthFirstOrderDFS.ts#L21">graphs/DepthFirstOrderDFS.ts:21</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1178,7 +1213,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">vertices<wbr>Preorder<span class="tsd-signature-symbol">:</span> <a href="stringmap.html" class="tsd-signature-type">StringMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new StringMap&lt;number&gt;()</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/graphs/DepthFirstOrderDFS.ts#L24">graphs/DepthFirstOrderDFS.ts:24</a></li>
+						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/DepthFirstOrderDFS.ts#L20">graphs/DepthFirstOrderDFS.ts:20</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1195,7 +1230,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/graphs/DepthFirstOrderDFS.ts#L44">graphs/DepthFirstOrderDFS.ts:44</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/DepthFirstOrderDFS.ts#L40">graphs/DepthFirstOrderDFS.ts:40</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1222,7 +1257,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/graphsapi.depthfirstorder.html">DepthFirstOrder</a>.<a href="../interfaces/graphsapi.depthfirstorder.html#post">post</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/graphs/DepthFirstOrderDFS.ts#L71">graphs/DepthFirstOrderDFS.ts:71</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/DepthFirstOrderDFS.ts#L67">graphs/DepthFirstOrderDFS.ts:67</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/commonsapi.collection.html" class="tsd-signature-type">Collection</a><span class="tsd-signature-symbol">&lt;</span><a href="../modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1240,7 +1275,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/graphsapi.depthfirstorder.html">DepthFirstOrder</a>.<a href="../interfaces/graphsapi.depthfirstorder.html#postordernumber">postorderNumber</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/graphs/DepthFirstOrderDFS.ts#L64">graphs/DepthFirstOrderDFS.ts:64</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/DepthFirstOrderDFS.ts#L60">graphs/DepthFirstOrderDFS.ts:60</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1264,7 +1299,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/graphsapi.depthfirstorder.html">DepthFirstOrder</a>.<a href="../interfaces/graphsapi.depthfirstorder.html#pre">pre</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/graphs/DepthFirstOrderDFS.ts#L75">graphs/DepthFirstOrderDFS.ts:75</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/DepthFirstOrderDFS.ts#L71">graphs/DepthFirstOrderDFS.ts:71</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/commonsapi.collection.html" class="tsd-signature-type">Collection</a><span class="tsd-signature-symbol">&lt;</span><a href="../modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1282,7 +1317,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/graphsapi.depthfirstorder.html">DepthFirstOrder</a>.<a href="../interfaces/graphsapi.depthfirstorder.html#preordernumber">preorderNumber</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/graphs/DepthFirstOrderDFS.ts#L57">graphs/DepthFirstOrderDFS.ts:57</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/DepthFirstOrderDFS.ts#L53">graphs/DepthFirstOrderDFS.ts:53</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1306,7 +1341,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/graphsapi.depthfirstorder.html">DepthFirstOrder</a>.<a href="../interfaces/graphsapi.depthfirstorder.html#reversepost">reversePost</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/graphs/DepthFirstOrderDFS.ts#L79">graphs/DepthFirstOrderDFS.ts:79</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/DepthFirstOrderDFS.ts#L75">graphs/DepthFirstOrderDFS.ts:75</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/commonsapi.collection.html" class="tsd-signature-type">Collection</a><span class="tsd-signature-symbol">&lt;</span><a href="../modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>

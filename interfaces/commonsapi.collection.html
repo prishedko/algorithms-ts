@@ -913,10 +913,19 @@ img { max-width: 100%; }
 			<a href="commonsapi.collection.html" class="tsd-kind-icon">Collection</a>
 			<ul>
 				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<a href="commonsapi.collection.html#every" class="tsd-kind-icon">every</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
 					<a href="commonsapi.collection.html#filter" class="tsd-kind-icon">filter</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<a href="commonsapi.collection.html#find" class="tsd-kind-icon">find</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
 					<a href="commonsapi.collection.html#foreach" class="tsd-kind-icon">for<wbr>Each</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<a href="commonsapi.collection.html#iterator" class="tsd-kind-icon">iterator</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter tsd-is-external">
 					<a href="commonsapi.collection.html#map" class="tsd-kind-icon">map</a>
@@ -927,7 +936,13 @@ img { max-width: 100%; }
 				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
 					<a href="commonsapi.collection.html#size" class="tsd-kind-icon">size</a>
 				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<a href="commonsapi.collection.html#some" class="tsd-kind-icon">some</a>
+				</li>
 			</ul>
+		</li>
+		<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
+			<a href="commonsapi.collectioniterator.html" class="tsd-kind-icon">Collection<wbr>Iterator</a>
 		</li>
 	</ul>
 </nav>
@@ -961,7 +976,7 @@ img { max-width: 100%; }
 		<section class="tsd-panel">
 			<h3>Implemented by</h3>
 			<ul class="tsd-hierarchy">
-				<li><a href="../classes/adjacencylistdigraph.html" class="tsd-signature-type">AdjacencyListDigraph</a></li>
+				<li><a href="../classes/abstractcollection.html" class="tsd-signature-type">AbstractCollection</a></li>
 				<li><a href="../classes/arraycollection.html" class="tsd-signature-type">ArrayCollection</a></li>
 				<li><a href="../classes/linkedqueue.html" class="tsd-signature-type">LinkedQueue</a></li>
 				<li><a href="../classes/linkedstack.html" class="tsd-signature-type">LinkedStack</a></li>
@@ -974,11 +989,15 @@ img { max-width: 100%; }
 					<section class="tsd-index-section tsd-is-external">
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="commonsapi.collection.html#every" class="tsd-kind-icon">every</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="commonsapi.collection.html#filter" class="tsd-kind-icon">filter</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="commonsapi.collection.html#find" class="tsd-kind-icon">find</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="commonsapi.collection.html#foreach" class="tsd-kind-icon">for<wbr>Each</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="commonsapi.collection.html#iterator" class="tsd-kind-icon">iterator</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter tsd-is-external"><a href="commonsapi.collection.html#map" class="tsd-kind-icon">map</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter tsd-is-external"><a href="commonsapi.collection.html#reduce" class="tsd-kind-icon">reduce</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="commonsapi.collection.html#size" class="tsd-kind-icon">size</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="commonsapi.collection.html#some" class="tsd-kind-icon">some</a></li>
 						</ul>
 					</section>
 				</div>
@@ -986,6 +1005,56 @@ img { max-width: 100%; }
 		</section>
 		<section class="tsd-panel-group tsd-member-group tsd-is-external">
 			<h2>Methods</h2>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+				<a name="every" class="tsd-anchor"></a>
+				<h3>every</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">every<span class="tsd-signature-symbol">(</span>p<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/commons/api.ts#L54">commons/api.ts:54</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Tests whether all elements in the array pass the given predicate.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>p: <span class="tsd-signature-type">function</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>predicate to check elements.</p>
+								</div>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter-siganture">
+										<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+										</ul>
+										<ul class="tsd-descriptions">
+											<li class="tsd-description">
+												<h4 class="tsd-parameters-title">Parameters</h4>
+												<ul class="tsd-parameters">
+													<li>
+														<h5>e: <span class="tsd-signature-type">E</span></h5>
+													</li>
+												</ul>
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						<p><code>true</code> if for every element the predicate returns <code>true</code>.</p>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
 				<a name="filter" class="tsd-anchor"></a>
 				<h3>filter</h3>
@@ -996,7 +1065,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/commons/api.ts#L24">commons/api.ts:24</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/commons/api.ts#L24">commons/api.ts:24</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1038,6 +1107,60 @@ img { max-width: 100%; }
 				</ul>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+				<a name="find" class="tsd-anchor"></a>
+				<h3>find</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">find<span class="tsd-signature-symbol">(</span>p<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/commons/api.ts#L48">commons/api.ts:48</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Returns the value of the first element in the array that satisfies the provided predicate. Otherwise
+								undefined is returned.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>p: <span class="tsd-signature-type">function</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>predicate to check elements.</p>
+								</div>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter-siganture">
+										<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+										</ul>
+										<ul class="tsd-descriptions">
+											<li class="tsd-description">
+												<h4 class="tsd-parameters-title">Parameters</h4>
+												<ul class="tsd-parameters">
+													<li>
+														<h5>e: <span class="tsd-signature-type">E</span></h5>
+													</li>
+												</ul>
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">E</span>
+							<span class="tsd-signature-symbol"> | </span>
+							<span class="tsd-signature-type">undefined</span>
+						</h4>
+						<p>first found element or undefined.</p>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
 				<a name="foreach" class="tsd-anchor"></a>
 				<h3>for<wbr>Each</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
@@ -1047,7 +1170,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/commons/api.ts#L29">commons/api.ts:29</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/commons/api.ts#L29">commons/api.ts:29</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1086,6 +1209,29 @@ img { max-width: 100%; }
 					</li>
 				</ul>
 			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+				<a name="iterator" class="tsd-anchor"></a>
+				<h3>iterator</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">iterator<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="commonsapi.collectioniterator.html" class="tsd-signature-type">CollectionIterator</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/commons/api.ts#L65">commons/api.ts:65</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Returns new <tt>CollectionIterator</tt> to iterate over <code>this</code> collection.</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <a href="commonsapi.collectioniterator.html" class="tsd-signature-type">CollectionIterator</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<p>new instance of iterator for <code>this</code> collection.</p>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter tsd-is-external">
 				<a name="map" class="tsd-anchor"></a>
 				<h3>map</h3>
@@ -1096,7 +1242,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/commons/api.ts#L17">commons/api.ts:17</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/commons/api.ts#L17">commons/api.ts:17</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1153,7 +1299,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/commons/api.ts#L36">commons/api.ts:36</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/commons/api.ts#L36">commons/api.ts:36</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1218,7 +1364,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/ce62a92/src/commons/api.ts#L41">commons/api.ts:41</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/commons/api.ts#L41">commons/api.ts:41</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1228,6 +1374,56 @@ img { max-width: 100%; }
 						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						<p>amount of elements in this container.</p>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+				<a name="some" class="tsd-anchor"></a>
+				<h3>some</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">some<span class="tsd-signature-symbol">(</span>p<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/commons/api.ts#L60">commons/api.ts:60</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Checks whether there is an element that passes given predicate.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>p: <span class="tsd-signature-type">function</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>predicate to check elements.</p>
+								</div>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter-siganture">
+										<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+										</ul>
+										<ul class="tsd-descriptions">
+											<li class="tsd-description">
+												<h4 class="tsd-parameters-title">Parameters</h4>
+												<ul class="tsd-parameters">
+													<li>
+														<h5>e: <span class="tsd-signature-type">E</span></h5>
+													</li>
+												</ul>
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						<p><code>true</code> if there is an element for which the predicate returns <code>true</code>.</p>
 					</li>
 				</ul>
 			</section>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>DirectedPaths | algorithms-ts</title>
+	<title>StronglyConnectedComponents | algorithms-ts</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -930,19 +930,22 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
 			<a href="graphsapi.directedeulerianpath.html" class="tsd-kind-icon">Directed<wbr>Eulerian<wbr>Path</a>
 		</li>
-		<li class="current tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
+		<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
 			<a href="graphsapi.directedpaths.html" class="tsd-kind-icon">Directed<wbr>Paths</a>
+		</li>
+		<li class="current tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
+			<a href="graphsapi.stronglyconnectedcomponents.html" class="tsd-kind-icon">Strongly<wbr>Connected<wbr>Components</a>
 			<ul>
 				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-					<a href="graphsapi.directedpaths.html#haspathto" class="tsd-kind-icon">has<wbr>Path<wbr>To</a>
+					<a href="graphsapi.stronglyconnectedcomponents.html#count" class="tsd-kind-icon">count</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-					<a href="graphsapi.directedpaths.html#pathto" class="tsd-kind-icon">path<wbr>To</a>
+					<a href="graphsapi.stronglyconnectedcomponents.html#id" class="tsd-kind-icon">id</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<a href="graphsapi.stronglyconnectedcomponents.html#stronglyconnected" class="tsd-kind-icon">strongly<wbr>Connected</a>
 				</li>
 			</ul>
-		</li>
-		<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
-			<a href="graphsapi.stronglyconnectedcomponents.html" class="tsd-kind-icon">Strongly<wbr>Connected<wbr>Components</a>
 		</li>
 		<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
 			<a href="graphsapi.topologicalorder.html" class="tsd-kind-icon">Topological<wbr>Order</a>
@@ -966,9 +969,12 @@ img { max-width: 100%; }
 		<section class="tsd-panel tsd-comment">
 			<div class="tsd-comment tsd-typography">
 				<div class="lead">
-					<p>The <code>DirectedPaths</code> class represents a data type for finding shortest paths (number of edges) from a
-						source vertex that was used to create instance of <code>DirectedPaths</code> (or set of source vertices) to
-					every other vertex in the digraph.</p>
+					<p>Represents a data type for determining the strong components in a digraph. The <tt>id</tt> operation determines
+						in which strong component a given vertex lies; the <tt>areStronglyConnected</tt> operation determines whether
+						two vertices are in the same strong component; and the <tt>count</tt> operation determines the number of strong
+						components.
+						The <tt>component identifier</tt> of a component is one of the vertices in the strong component: two vertices
+					have the same component identifier if and only if they are in the same strong component.</p>
 					<p><p>
 							For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
 						<i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.</p>
@@ -987,15 +993,16 @@ img { max-width: 100%; }
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="target">DirectedPaths</span>
+					<span class="target">StronglyConnectedComponents</span>
 				</li>
 			</ul>
 		</section>
 		<section class="tsd-panel">
 			<h3>Implemented by</h3>
 			<ul class="tsd-hierarchy">
-				<li><a href="../classes/breadthfirstdirectedpaths.html" class="tsd-signature-type">BreadthFirstDirectedPaths</a></li>
-				<li><a href="../classes/depthfirstdirectedpaths.html" class="tsd-signature-type">DepthFirstDirectedPaths</a></li>
+				<li><a href="../classes/gabowscc.html" class="tsd-signature-type">GabowSCC</a></li>
+				<li><a href="../classes/kosarajusharirscc.html" class="tsd-signature-type">KosarajuSharirSCC</a></li>
+				<li><a href="../classes/tarjanscc.html" class="tsd-signature-type">TarjanSCC</a></li>
 			</ul>
 		</section>
 		<section class="tsd-panel-group tsd-index-group">
@@ -1005,8 +1012,9 @@ img { max-width: 100%; }
 					<section class="tsd-index-section tsd-is-external">
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="graphsapi.directedpaths.html#haspathto" class="tsd-kind-icon">has<wbr>Path<wbr>To</a></li>
-							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="graphsapi.directedpaths.html#pathto" class="tsd-kind-icon">path<wbr>To</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="graphsapi.stronglyconnectedcomponents.html#count" class="tsd-kind-icon">count</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="graphsapi.stronglyconnectedcomponents.html#id" class="tsd-kind-icon">id</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="graphsapi.stronglyconnectedcomponents.html#stronglyconnected" class="tsd-kind-icon">strongly<wbr>Connected</a></li>
 						</ul>
 					</section>
 				</div>
@@ -1015,55 +1023,44 @@ img { max-width: 100%; }
 		<section class="tsd-panel-group tsd-member-group tsd-is-external">
 			<h2>Methods</h2>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-				<a name="haspathto" class="tsd-anchor"></a>
-				<h3>has<wbr>Path<wbr>To</h3>
+				<a name="count" class="tsd-anchor"></a>
+				<h3>count</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-					<li class="tsd-signature tsd-kind-icon">has<wbr>Path<wbr>To<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><a href="../modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					<li class="tsd-signature tsd-kind-icon">count<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/api.ts#L155">graphs/api.ts:155</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/api.ts#L306">graphs/api.ts:306</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Is there a directed path from the source (or sources) to vertex <code>v</code>?</p>
+								<p>Returns the number of strong components.</p>
 							</div>
 						</div>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>v: <a href="../modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h5>
-								<div class="tsd-comment tsd-typography">
-									<p>the vertex</p>
-								</div>
-							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-						<p><code>true</code> if there is a directed path, <code>false</code> otherwise. Also returns
-						<code>false</code> if the vertex is not in the graph.</p>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						<p>the number of strong components</p>
 					</li>
 				</ul>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-				<a name="pathto" class="tsd-anchor"></a>
-				<h3>path<wbr>To</h3>
+				<a name="id" class="tsd-anchor"></a>
+				<h3>id</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-					<li class="tsd-signature tsd-kind-icon">path<wbr>To<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><a href="../modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="commonsapi.collection.html" class="tsd-signature-type">Collection</a><span class="tsd-signature-symbol">&lt;</span><a href="../modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><a href="../modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/api.ts#L163">graphs/api.ts:163</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/api.ts#L321">graphs/api.ts:321</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Returns a shortest path from source (or sources) to vertex <code>v</code>, or empty collection if no such
-								path.</p>
+								<p>Returns the component id of the strong component containing vertex <code>v</code>.</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1071,13 +1068,52 @@ img { max-width: 100%; }
 							<li>
 								<h5>v: <a href="../modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
-									<p>the vertex</p>
+									<p>the vertex.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="commonsapi.collection.html" class="tsd-signature-type">Collection</a><span class="tsd-signature-symbol">&lt;</span><a href="../modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						<p>the sequence of vertices on a shortest path, as a
-						Collection.</p>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						<p>the component id of the strong component containing vertex <code>v</code> or -1 if the
+						vertex is not in the graph.</p>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+				<a name="stronglyconnected" class="tsd-anchor"></a>
+				<h3>strongly<wbr>Connected</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">strongly<wbr>Connected<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><a href="../modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span>, w<span class="tsd-signature-symbol">: </span><a href="../modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/api.ts#L314">graphs/api.ts:314</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Are vertices <code>v</code> and <code>w</code> in the same strong component?</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>v: <a href="../modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>one vertex</p>
+								</div>
+							</li>
+							<li>
+								<h5>w: <a href="../modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>the other vertex</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						<p><code>true</code> if vertices <code>v</code> and <code>w</code> are in the same strong
+						component, and <code>false</code> otherwise</p>
 					</li>
 				</ul>
 			</section>
