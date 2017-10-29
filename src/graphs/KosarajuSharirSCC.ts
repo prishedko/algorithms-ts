@@ -11,9 +11,6 @@ import StronglyConnectedComponents = GraphsAPI.StronglyConnectedComponents
  * <tt>V</tt> + <tt>E</tt> (in the worst case), where <tt>V</tt> is the number of vertices and <tt>E</tt> is the number
  * of edges. Afterwards, the <tt>id</tt>, <tt>count</tt>, and <tt>areStronglyConnected</tt> operations take constant
  * time.
- * <p>
- * For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of <i>Algorithms,
- * 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 export class KosarajuSharirSCC<V> implements StronglyConnectedComponents<V> {
     private marked = new StringMap<boolean>()   // marked[v] = has vertex v been visited?

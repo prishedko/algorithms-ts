@@ -14,9 +14,6 @@ import emptyCollection = CommonsBuilder.emptyCollection
  * This implementation uses depth-first search. The constructor takes time proportional to <tt>V</tt> + <tt>E</tt>,
  * where <tt>V</tt> is the number of vertices and <tt>E</tt> is the number of edges. It uses extra space (not including
  * the graph) proportional to <tt>V</tt>.
- * <p>
- * For additional documentation, see <a href="/algs4/41graph">Section 4.1</a> of
- * <i>Algorithms, 4th Edition</i>
  */
 export class DepthFirstDirectedPaths<V> implements DirectedPaths<V> {
     private marked = new StringMap<boolean>()       // marked[v] = true if v is reachable from s

@@ -17,9 +17,6 @@ import collectionFromArray = CommonsBuilder.collectionFromArray
  * For large digraphs, you may want to consider a more sophisticated algorithm.
  * <a href = "http://www.cs.hut.fi/~enu/thesis.html">Nuutila</a> proposes two algorithm for the problem (based on strong
  * components and an interval representation) that runs in <em>E</em> + <em>V</em> time on typical digraphs.
- *
- * For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of <i>Algorithms,
- * 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 export class TransitiveClosureDFS<V> implements TransitiveClosure<V> {
     private tc = new StringMap<Directed<V>>()   // tc[v] = reachable from v

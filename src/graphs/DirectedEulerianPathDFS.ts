@@ -14,9 +14,6 @@ import DirectedEulerianPath = GraphsAPI.DirectedEulerianPath
 /**
  * This implementation uses a nonrecursive depth-first search. The constructor runs in O(E + V) time, and uses O(V)
  * extra space, where E is the number of edges and V the number of vertices. All other methods take O(1) time.
- * <p>
- * For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
- * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 export class DirectedEulerianPathDFS<V> implements DirectedEulerianPath<V> {
     private eulerianPath: Cycle<V>   // Eulerian path; null if no suh path

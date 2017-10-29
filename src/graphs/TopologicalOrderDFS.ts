@@ -20,9 +20,6 @@ type Order<V> = Queue<Vertex<V>> | undefined
  * <tt>V</tt> + <tt>E</tt> (in the worst case), where <tt>V</tt> is the number of vertices and <tt>E</tt> is the number
  * of edges. Afterwards, the <tt>hasOrder</tt> and <tt>rank</tt> operations takes constant time; the <tt>order</tt>
  * operation takes time proportional to <tt>V</tt>.
- * <p>
- * For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of <i>Algorithms,
- * 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 export class TopologicalOrderDFS<V> implements TopologicalOrder<V> {
     private topologicalOrder: Order<V>                    // vertices in topological order

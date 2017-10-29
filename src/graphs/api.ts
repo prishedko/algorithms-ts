@@ -118,6 +118,10 @@ export namespace GraphsAPI {
      * <p/>
      * Graph analysis runs in O(E + V) time during the instance creating. Than running times of <tt>hasCycle</tt>
      * and <tt>cycle</tt> are O(1).
+     * <p>
+     * For additional documentation,
+     * see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of <i>Algorithms, 4th Edition</i> by Robert
+     * Sedgewick and Kevin Wayne.
      */
     export interface DirectedCycle<V> {
         /**
@@ -137,6 +141,9 @@ export namespace GraphsAPI {
      * The <code>DirectedPaths</code> class represents a data type for finding shortest paths (number of edges) from a
      * source vertex that was used to create instance of <code>DirectedPaths</code> (or set of source vertices) to
      * every other vertex in the digraph.
+     * <p>
+     * For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+     * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
      */
     export interface DirectedPaths<V> {
         /**
@@ -172,6 +179,9 @@ export namespace GraphsAPI {
     /**
      * The <code>DepthFirstOrder</code> class represents a data type for determining depth-first search ordering of the
      * vertices in a digraph or edge-weighted digraph, including preorder, postorder, and reverse postorder.
+     * <p>
+     * For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+     * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
      */
     export interface DepthFirstOrder<V> {
         /**
@@ -207,6 +217,9 @@ export namespace GraphsAPI {
      * The <code>DirectedEulerianCycle</code> class represents a data type for finding an Eulerian cycle or path in a
      * digraph. An <tt>Eulerian cycle</tt> is a cycle (not necessarily simple) that uses every edge in the digraph
      * exactly once.
+     * <p/>
+     * For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+     * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
      */
     export interface DirectedEulerianCycle<V> {
         /**
@@ -225,6 +238,9 @@ export namespace GraphsAPI {
      * Represents a data type for determining a topological order of a directed acyclic graph (DAG). Recall, a digraph
      * has a topological order if and only if it is a DAG. The <tt>hasOrder</tt> operation determines whether the
      * digraph has a topological order, and if so, the <tt>order</tt> operation returns one.
+     * <p>
+     * For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+     * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
      */
     export interface TopologicalOrder<V> {
         /**
@@ -252,6 +268,9 @@ export namespace GraphsAPI {
     /**
      * The <code>DirectedEulerianPath</code> class represents a data type for finding an Eulerian path in a digraph.
      * An <tt>Eulerian path</tt> is a path (not necessarily simple) that uses every edge in the digraph exactly once.
+     * <p>
+     * For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+     * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
      */
     export interface DirectedEulerianPath<V> {
         /**
@@ -275,6 +294,9 @@ export namespace GraphsAPI {
      * components.
      * The <tt>component identifier</tt> of a component is one of the vertices in the strong component: two vertices
      * have the same component identifier if and only if they are in the same strong component.
+     * <p>
+     * For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+     * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
      */
     export interface StronglyConnectedComponents<V> {
         /**
@@ -302,6 +324,9 @@ export namespace GraphsAPI {
     /**
      *  The <code>Directed</code> class represents a data type for determining the vertices reachable from a given
      *  source vertex <tt>s</tt> (or set of source vertices) in a digraph.
+     * <p>
+     * For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+     * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
      */
     export interface Directed<V> {
         /**
@@ -318,8 +343,11 @@ export namespace GraphsAPI {
     }
 
     /**
-     *  The <code>TransitiveClosure</code> class represents a data type for computing the transitive closure of a
-     *  digraph.
+     * The <code>TransitiveClosure</code> class represents a data type for computing the transitive closure of a
+     * digraph.
+     * <p/>
+     * For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+     * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
      */
     export interface TransitiveClosure<V> {
         /**

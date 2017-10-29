@@ -15,10 +15,6 @@ import emptyCollection = CommonsBuilder.emptyCollection
  * This implementation uses breadth-first search. The constructor takes time proportional to <tt>V</tt> + <tt>E</tt>,
  * where <tt>V</tt> is the number of vertices and <tt>E</tt> is the number of edges. It uses extra space (not including
  * the digraph) proportional to <tt>V</tt>.
- * <p>
- * For additional documentation,
- * see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
- * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 export class BreadthFirstDirectedPaths<V> implements DirectedPaths<V> {
     private marked = new StringMap<boolean>()       // marked[v] = is there an s->v path?

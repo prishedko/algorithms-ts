@@ -15,9 +15,6 @@ import CollectionIterator = CommonsAPI.CollectionIterator
  * This implementation uses a nonrecursive depth-first search. The constructor runs in O(<tt>E</tt> + <tt>V</tt>) time,
  * and uses O(<tt>V</tt>) extra space, where <tt>E</tt> is the number of edges and <tt>V</tt> the number of vertices.
  * All other methods take O(1) time.
- * For additional documentation,
- * see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
- * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 export class DirectedEulerianCycleDFS<V> implements DirectedEulerianCycle<V> {
     private eulerianCycle: Cycle<V>  // Eulerian cycle; undefined if no such cylce

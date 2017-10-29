@@ -14,10 +14,6 @@ import newQueue = ContainersBuilders.newQueue
  * (in the worst case), where <tt>V</tt> is the number of vertices and <tt>E</tt> is the number of edges.
  * Afterwards, the <tt>preorder</tt> and <tt>postorder</tt> operations take constant time, and
  * <tt>reverse postorder</tt> operation takes take time proportional to <tt>V</tt>.
- * <p>
- * For additional documentation,
- * see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
- * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 export class DepthFirstOrderDFS<V> implements DepthFirstOrder<V> {
     private marked = new StringMap<boolean>()          // marked[v] = has v been marked in dfs?

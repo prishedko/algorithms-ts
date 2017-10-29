@@ -11,9 +11,6 @@ import StronglyConnectedComponents = GraphsAPI.StronglyConnectedComponents
  * This implementation uses the Gabow's algorithm. The constructor takes time proportional to <em>V</em> + <em>E</em>
  * (in the worst case), where <em>V</em> is the number of vertices and <em>E</em> is the number of edges. Afterwards,
  * the <em>id</em>, <em>count</em>, and <em>areStronglyConnected</em> operations take constant time.
- *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 export class GabowSCC<V> implements StronglyConnectedComponents<V> {
     private marked = new StringMap<boolean>()   // marked[v] = has v been visited?

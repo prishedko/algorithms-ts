@@ -17,10 +17,6 @@ import newQueue = ContainersBuilders.newQueue
  * This implementation uses a nonrecursive, queue-based algorithm. The constructor takes time proportional to <tt>V</tt>
  * + <tt>E</tt> (in the worst case), where <tt>V</tt> is the number of vertices and <tt>E</tt> is the number of edges.
  * Afterwards, the <tt>hasCycle</tt> and <tt>cycle</tt> operations take constant time.
- * <p>
- * For additional documentation,
- * see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
- * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 export class QueueDirectedCycle<V> implements DirectedCycle<V> {
     private detectedCycle: Cycle<V>
