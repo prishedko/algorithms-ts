@@ -121,6 +121,7 @@ export class AdjacencyListDigraph<V> implements Digraph<V> {
     reverse(): GraphsAPI.Digraph<V> {
         const result = new AdjacencyListDigraph<V>()
         this.asVerticesCollection().forEach(v => {
+            result.addVertex(v)
             this.adjacent(v).forEach(w => result.addEdge(w, v))
         })
         return result
