@@ -7,6 +7,9 @@ Wayne's [website](http://algs4.cs.princeton.edu/home/) for their book [Algorithm
 #### Containers
 * [Stack](https://prishedko.github.io/algorithms-ts/interfaces/containersapi.stack.html)
 * [Queue](https://prishedko.github.io/algorithms-ts/interfaces/containersapi.queue.html)
+    * [Linked Queue](https://prishedko.github.io/algorithms-ts/modules/containersbuilders.html#newqueue)
+    * [Max Priority Queue](https://prishedko.github.io/algorithms-ts/modules/containersbuilders.html#newmaxpq)
+    * [Min Priority Queue](https://prishedko.github.io/algorithms-ts/modules/containersbuilders.html#newminpq)
 
 #### Directed graphs
 * [Depth First Order](https://prishedko.github.io/algorithms-ts/interfaces/graphsapi.depthfirstorder.html)

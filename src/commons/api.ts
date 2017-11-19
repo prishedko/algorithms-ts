@@ -87,4 +87,23 @@ export namespace CommonsAPI {
          */
         forEachRemaining(f: (e: E) => void): void
     }
+    /**
+     * Defines result of comparison of
+     */
+    export enum Ordering {
+        /** Lesser than */
+        LT = -1,
+        /** Equal */
+        EQ = 0,
+        /** Greater than */
+        GT = 1
+    }
+    /**
+     * A comparison function, which imposes a <i>total ordering</i> on some collection of objects. Compares its two
+     * arguments for order. Returns a LT, EQ, or GT as the first argument is less than, equal to, or greater than the
+     * second.
+     *
+     * @param <T> the type of objects that may be compared by this comparator
+     */
+    export type Comparator<T> = (left: T, right: T) => Ordering
 }

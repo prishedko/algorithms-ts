@@ -6,6 +6,9 @@ import Collection = CommonsAPI.Collection
  * Contains factory functions for creating instances of commonly used ADTs.
  */
 export namespace CommonsBuilder {
+    import Comparator = CommonsAPI.Comparator
+    import Ordering = CommonsAPI.Ordering
+
     /**
      * Creates new instance of empty <tt>Collection</tt>.
      * @return {CommonsAPI.Collection<E>} new instance of empty <tt>Collection</tt>.
@@ -25,5 +28,31 @@ export namespace CommonsBuilder {
      */
     export function collectionFromArray<E>(array: E[], copyArray: boolean = true): Collection<E> {
         return new ArrayCollection(array, copyArray)
+    }
+
+    /**
+     * Compares two numbers. Uses default comparison operators.
+     */
+    export const numberComparator: Comparator<number> = (left: number, right: number) => {
+        if (left < right) {
+            return Ordering.LT
+        } else if (left > right) {
+            return Ordering.GT
+        } else {
+            return Ordering.EQ
+        }
+    }
+
+    /**
+     * Compares two numbers. Uses default lexicographical string comparison.
+     */
+    export const stringComparator: Comparator<string> = (left: string, right: string) => {
+        if (left < right) {
+            return Ordering.LT
+        } else if (left > right) {
+            return Ordering.GT
+        } else {
+            return Ordering.EQ
+        }
     }
 }
