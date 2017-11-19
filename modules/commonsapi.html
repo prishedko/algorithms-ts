@@ -909,11 +909,17 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
+		<li class=" tsd-kind-enum tsd-parent-kind-module tsd-is-external">
+			<a href="../enums/commonsapi.ordering.html" class="tsd-kind-icon">Ordering</a>
+		</li>
 		<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
 			<a href="../interfaces/commonsapi.collection.html" class="tsd-kind-icon">Collection</a>
 		</li>
 		<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
 			<a href="../interfaces/commonsapi.collectioniterator.html" class="tsd-kind-icon">Collection<wbr>Iterator</a>
+		</li>
+		<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-external">
+			<a href="commonsapi.html#comparator" class="tsd-kind-icon">Comparator</a>
 		</li>
 	</ul>
 </nav>
@@ -931,12 +937,73 @@ img { max-width: 100%; }
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section tsd-is-external">
+						<h3>Enumerations</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-enum tsd-parent-kind-module tsd-is-external"><a href="../enums/commonsapi.ordering.html" class="tsd-kind-icon">Ordering</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section tsd-is-external">
 						<h3>Interfaces</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external"><a href="../interfaces/commonsapi.collection.html" class="tsd-kind-icon">Collection</a></li>
 							<li class="tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external"><a href="../interfaces/commonsapi.collectioniterator.html" class="tsd-kind-icon">Collection<wbr>Iterator</a></li>
 						</ul>
 					</section>
+					<section class="tsd-index-section tsd-is-external">
+						<h3>Type aliases</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-external"><a href="commonsapi.html#comparator" class="tsd-kind-icon">Comparator</a></li>
+						</ul>
+					</section>
+				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group tsd-is-external">
+			<h2>Type aliases</h2>
+			<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-is-external">
+				<a name="comparator" class="tsd-anchor"></a>
+				<h3>Comparator</h3>
+				<div class="tsd-signature tsd-kind-icon">Comparator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/70a2846/src/commons/api.ts#L108">commons/api.ts:108</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A comparison function, which imposes a <i>total ordering</i> on some collection of objects. Compares its two
+							arguments for order. Returns a LT, EQ, or GT as the first argument is less than, equal to, or greater than the
+						second.</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>param</dt>
+						<dd><p>the type of objects that may be compared by this comparator</p>
+						</dd>
+					</dl>
+				</div>
+				<div class="tsd-type-declaration">
+					<h4>Type declaration</h4>
+					<ul class="tsd-parameters">
+						<li class="tsd-parameter-siganture">
+							<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>left<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, right<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../enums/commonsapi.ordering.html" class="tsd-signature-type">Ordering</a></li>
+							</ul>
+							<ul class="tsd-descriptions">
+								<li class="tsd-description">
+									<h4 class="tsd-parameters-title">Parameters</h4>
+									<ul class="tsd-parameters">
+										<li>
+											<h5>left: <span class="tsd-signature-type">T</span></h5>
+										</li>
+										<li>
+											<h5>right: <span class="tsd-signature-type">T</span></h5>
+										</li>
+									</ul>
+									<h4 class="tsd-returns-title">Returns <a href="../enums/commonsapi.ordering.html" class="tsd-signature-type">Ordering</a></h4>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</div>
 			</section>
 		</section>

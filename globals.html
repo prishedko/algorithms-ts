@@ -952,6 +952,9 @@ img { max-width: 100%; }
 			<a href="classes/gabowscc.html" class="tsd-kind-icon">GabowSCC</a>
 		</li>
 		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+			<a href="classes/heapiterator.html" class="tsd-kind-icon">Heap<wbr>Iterator</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
 			<a href="classes/kosarajusharirscc.html" class="tsd-kind-icon">Kosaraju<wbr>SharirSCC</a>
 		</li>
 		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
@@ -962,6 +965,9 @@ img { max-width: 100%; }
 		</li>
 		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
 			<a href="classes/nodesiterator.html" class="tsd-kind-icon">Nodes<wbr>Iterator</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+			<a href="classes/priorityqueue.html" class="tsd-kind-icon">Priority<wbr>Queue</a>
 		</li>
 		<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
 			<a href="classes/queuedirectedcycle.html" class="tsd-kind-icon">Queue<wbr>Directed<wbr>Cycle</a>
@@ -1005,7 +1011,12 @@ img { max-width: 100%; }
 			<h4 id="containers">Containers</h4>
 			<ul>
 				<li><a href="https://prishedko.github.io/algorithms-ts/interfaces/containersapi.stack.html">Stack</a></li>
-				<li><a href="https://prishedko.github.io/algorithms-ts/interfaces/containersapi.queue.html">Queue</a></li>
+				<li><a href="https://prishedko.github.io/algorithms-ts/interfaces/containersapi.queue.html">Queue</a><ul>
+						<li><a href="https://prishedko.github.io/algorithms-ts/modules/containersbuilders.html#newqueue">Linked Queue</a></li>
+						<li><a href="https://prishedko.github.io/algorithms-ts/modules/containersbuilders.html#newmaxpq">Max Priority Queue</a></li>
+						<li><a href="https://prishedko.github.io/algorithms-ts/modules/containersbuilders.html#newminpq">Min Priority Queue</a></li>
+					</ul>
+				</li>
 			</ul>
 			<h4 id="directed-graphs">Directed graphs</h4>
 			<ul>
@@ -1061,10 +1072,12 @@ img { max-width: 100%; }
 							<li class="tsd-kind-class tsd-has-type-parameter tsd-is-external"><a href="classes/directedeuleriancycledfs.html" class="tsd-kind-icon">Directed<wbr>Eulerian<wbr>CycleDFS</a></li>
 							<li class="tsd-kind-class tsd-has-type-parameter tsd-is-external"><a href="classes/directedeulerianpathdfs.html" class="tsd-kind-icon">Directed<wbr>Eulerian<wbr>PathDFS</a></li>
 							<li class="tsd-kind-class tsd-has-type-parameter tsd-is-external"><a href="classes/gabowscc.html" class="tsd-kind-icon">GabowSCC</a></li>
+							<li class="tsd-kind-class tsd-has-type-parameter tsd-is-external"><a href="classes/heapiterator.html" class="tsd-kind-icon">Heap<wbr>Iterator</a></li>
 							<li class="tsd-kind-class tsd-has-type-parameter tsd-is-external"><a href="classes/kosarajusharirscc.html" class="tsd-kind-icon">Kosaraju<wbr>SharirSCC</a></li>
 							<li class="tsd-kind-class tsd-has-type-parameter tsd-is-external"><a href="classes/linkedqueue.html" class="tsd-kind-icon">Linked<wbr>Queue</a></li>
 							<li class="tsd-kind-class tsd-has-type-parameter tsd-is-external"><a href="classes/linkedstack.html" class="tsd-kind-icon">Linked<wbr>Stack</a></li>
 							<li class="tsd-kind-class tsd-has-type-parameter tsd-is-external"><a href="classes/nodesiterator.html" class="tsd-kind-icon">Nodes<wbr>Iterator</a></li>
+							<li class="tsd-kind-class tsd-has-type-parameter tsd-is-external"><a href="classes/priorityqueue.html" class="tsd-kind-icon">Priority<wbr>Queue</a></li>
 							<li class="tsd-kind-class tsd-has-type-parameter tsd-is-external"><a href="classes/queuedirectedcycle.html" class="tsd-kind-icon">Queue<wbr>Directed<wbr>Cycle</a></li>
 							<li class="tsd-kind-class tsd-has-type-parameter tsd-is-external"><a href="classes/stringmap.html" class="tsd-kind-icon">String<wbr>Map</a></li>
 							<li class="tsd-kind-class tsd-has-type-parameter tsd-is-external"><a href="classes/tarjanscc.html" class="tsd-kind-icon">TarjanSCC</a></li>
@@ -1098,7 +1111,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Cycle<span class="tsd-signature-symbol">:</span> <a href="interfaces/containersapi.stack.html" class="tsd-signature-type">Stack</a><span class="tsd-signature-symbol">&lt;</span><a href="modules/graphsapi.html#vertex" class="tsd-signature-type">Vertex</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/AuxiliaryTypes.ts#L11">graphs/AuxiliaryTypes.ts:11</a></li>
+						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/70a2846/src/graphs/AuxiliaryTypes.ts#L11">graphs/AuxiliaryTypes.ts:11</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1108,7 +1121,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Entry<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/AuxiliaryTypes.ts#L26">graphs/AuxiliaryTypes.ts:26</a></li>
+						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/70a2846/src/graphs/AuxiliaryTypes.ts#L26">graphs/AuxiliaryTypes.ts:26</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -1123,7 +1136,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Node<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/containers/AuxiliaryTypes.ts#L3">containers/AuxiliaryTypes.ts:3</a></li>
+						<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/70a2846/src/containers/AuxiliaryTypes.ts#L3">containers/AuxiliaryTypes.ts:3</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1140,7 +1153,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/AuxiliaryTypes.ts#L22">graphs/AuxiliaryTypes.ts:22</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/70a2846/src/graphs/AuxiliaryTypes.ts#L22">graphs/AuxiliaryTypes.ts:22</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1172,7 +1185,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/a58cf8d/src/graphs/AuxiliaryTypes.ts#L99">graphs/AuxiliaryTypes.ts:99</a></li>
+								<li>Defined in <a href="https://github.com/prishedko/algorithms-ts/blob/70a2846/src/graphs/AuxiliaryTypes.ts#L99">graphs/AuxiliaryTypes.ts:99</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
