@@ -1,6 +1,6 @@
 {
     "name": "algorithms-ts",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Java to Typesctipt translations of algorithms from Robert Sedgewick and Kevin Wayne's website for their book Algorithms.",
     "main": "index.js",
     "engineStrict": true,
