@@ -1,12 +1,11 @@
-import { GraphsBuilders } from '../../src'
-import { tinyDG } from '../data/tinyDG'
-import { sccDG } from '../data/sccDG'
-import { GraphsAPI } from '../../src/graphs/api'
+import {CommonGraphBuilders, DigraphBuilders, DigraphAPI} from '../../src'
+import {tinyDG} from '../data/tinyDG'
+import {sccDG} from '../data/sccDG'
 
-import digraphFromEdgesKeys = GraphsBuilders.digraphFromEdgesKeys
-import verkey = GraphsBuilders.verkey
-import Digraph = GraphsAPI.Digraph
-import StronglyConnectedComponents = GraphsAPI.StronglyConnectedComponents
+import digraphFromEdgesKeys = DigraphBuilders.digraphFromEdgesKeys
+import verkey = CommonGraphBuilders.verkey
+import Digraph = DigraphAPI.Digraph
+import StronglyConnectedComponents = DigraphAPI.StronglyConnectedComponents
 
 export function testScc(sccBuilder: (dg: Digraph<string>) => StronglyConnectedComponents<string>): void {
     describe('SCC tests', () => {
