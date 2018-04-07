@@ -2,9 +2,9 @@ import {CommonGraphAPI} from '../common/CommonGraphAPI'
 import {CommonsAPI} from '../../'
 import {CommonsBuilder} from '../../'
 import {StringMap, ListNode, VerticesCollection} from '../common/AuxiliaryTypes'
-import {DigraphAPI} from './DigraphAPI'
+import {UndirectedGraphAPI} from './UndirectedGraphAPI'
 
-import Digraph = DigraphAPI.Digraph
+import Graph = UndirectedGraphAPI.Graph
 import Vertex = CommonGraphAPI.Vertex
 import Collection = CommonsAPI.Collection
 import emptyCollection = CommonsBuilder.emptyCollection
@@ -21,17 +21,16 @@ import VerticesPair = CommonGraphAPI.VerticesPair
  * see <a href="http://algs4.cs.princeton.edu/42directed">Section 4.2</a> of
  * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
-export class AdjacencyListDigraph<V> implements Digraph<V> {
+export class AdjacencyListGraph<V> implements Graph<V> {
     private adjacencyList = new StringMap<ListNode<V>>()
     private verticesAmount: number = 0
     private edgesAmount: number = 0
-    private indegrees = new StringMap<number>()
 
     constructor(edges: VerticesPair<V>[] = []) {
         edges.forEach(edge => this.addEdge(edge[0], edge[1]))
     }
 
-    addVertex(v: Vertex<V>): Digraph<V> {
+    addVertex(v: Vertex<V>): Graph<V> {
         if (!this.adjacencyList.has(v.key)) {
             this.adjacencyList.set(v.key, {
                 vertex: v,
@@ -42,12 +41,12 @@ export class AdjacencyListDigraph<V> implements Digraph<V> {
         return this
     }
 
-    addEdge(from: Vertex<V>, to: Vertex<V>): Digraph<V> {
-        this.addVertex(from)
-        this.addVertex(to)
-        this.adjacencyList.get(from.key)!.adjecent.push(to)
+    addEdge(v: Vertex<V>, w: Vertex<V>): Graph<V> {
+        this.addVertex(v)
+        this.addVertex(w)
+        this.adjacencyList.get(v.key)!.adjecent.push(w)
+        this.adjacencyList.get(w.key)!.adjecent.push(v)
         this.edgesAmount++
-        this.indegrees.set(to.key, this.indegrees.get(to.key) === undefined ? 1 : this.indegrees.get(to.key)! + 1)
         return this
     }
 
@@ -66,29 +65,6 @@ export class AdjacencyListDigraph<V> implements Digraph<V> {
         return emptyCollection()
     }
 
-    outdegree(v: Vertex<V>): number {
-        if (this.adjacencyList.has(v.key)) {
-            return this.adjacencyList.get(v.key)!.adjecent.length
-        }
-        return 0
-    }
-
-    indegree(v: Vertex<V>): number {
-        if (this.indegrees.has(v.key)) {
-            return this.indegrees.get(v.key)!
-        }
-        return 0
-    }
-
-    reverse(): Digraph<V> {
-        const result = new AdjacencyListDigraph<V>()
-        this.asVerticesCollection().forEach(v => {
-            result.addVertex(v)
-            this.adjacent(v).forEach(w => result.addEdge(w, v))
-        })
-        return result
-    }
-
     toString(): string {
         let s = ''
         s += this.verticesAmount + ' vertices, ' + this.edgesAmount + ' edges \n'
@@ -105,9 +81,19 @@ export class AdjacencyListDigraph<V> implements Digraph<V> {
     }
 
     asEdgesCollection(): Collection<VerticesPair<V>> {
+        function mappedKey(v: Vertex<V>, w: Vertex<V>): string {
+            return `${v.key}-${w.key}`
+        }
+
         const edges: VerticesPair<V>[] = []
+        const mapped = new Map<string, boolean>()
         this.asVerticesCollection().forEach(v => {
-            this.adjacent(v).forEach(w => edges.push([v, w]))
+            this.adjacent(v).forEach(w => {
+                if (!mapped.has(mappedKey(v, w)) && !mapped.has(mappedKey(w, v))) {
+                    edges.push([v, w])
+                    mapped.set(mappedKey(v, w), true)
+                }
+            })
         })
         return collectionFromArray(edges, false)
     }

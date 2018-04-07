@@ -7,6 +7,7 @@ import {ArrayIterator} from '../../commons/ArrayIterator'
 import Vertex = CommonGraphAPI.Vertex
 import Stack = ContainersAPI.Stack
 import CollectionIterator = CommonsAPI.CollectionIterator
+import {AbstractCollection} from '../../commons/AbstractCollection'
 
 export type Cycle<V> = Stack<Vertex<V>> | undefined
 
@@ -98,4 +99,40 @@ export class StringMap<T> {
 
 export function isMarked<V>(v: Vertex<V>, marked: StringMap<boolean>): boolean {
     return marked.has(v.key) && marked.get(v.key) === true
+}
+
+export interface ListNode<V> {
+    readonly vertex: Vertex<V>
+    readonly adjecent: Vertex<V>[]
+}
+
+class VerticesIterator<V> extends AbstractIterator<Vertex<V>> {
+    private delegatee: CollectionIterator<Entry<ListNode<V>>>
+
+    constructor(adjacencyList: StringMap<ListNode<V>>) {
+        super()
+        this.delegatee = adjacencyList.iterator()
+    }
+
+    hasNext(): boolean {
+        return this.delegatee.hasNext()
+    }
+
+    next(): Vertex<V> {
+        return this.delegatee.next().value.vertex
+    }
+}
+
+export class VerticesCollection<V> extends AbstractCollection<Vertex<V>> {
+    constructor(private verticesAmount: () => number, private adjacencyList: StringMap<ListNode<V>>) {
+        super()
+    }
+
+    size(): number {
+        return this.verticesAmount()
+    }
+
+    iterator(): CommonsAPI.CollectionIterator<Vertex<V>> {
+        return new VerticesIterator(this.adjacencyList)
+    }
 }

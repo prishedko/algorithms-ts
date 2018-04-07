@@ -19,7 +19,7 @@ import {DirectedDFS} from './DirectedDFS'
 import {TransitiveClosureDFS} from './TransitiveClosureDFS'
 
 /**
- * Factory functions for creating instances of graphs' ADTs.
+ * Factory functions for creating instances of directed graphs' ADTs.
  */
 export namespace DigraphBuilders {
     import Digraph = DigraphAPI.Digraph
