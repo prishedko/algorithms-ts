@@ -1,6 +1,12 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "es3",
+        "lib": [
+            "DOM",
+            "ES6",
+            "DOM.Iterable",
+            "ScriptHost"
+        ],
         "module": "commonjs",
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
@@ -13,6 +19,7 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "declaration": true,
+        "downlevelIteration": true,
         "rootDir": ".",
         "outDir": "build"
     },
